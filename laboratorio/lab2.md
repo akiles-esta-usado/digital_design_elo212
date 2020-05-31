@@ -87,7 +87,6 @@ es necesario saber como funciona el FF tipo D
 
 #### counter_4bit
 
-
 #### tb_counter_4bit
 Se declaran las variables internas
 

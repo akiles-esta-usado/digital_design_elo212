@@ -1,26 +1,6 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company:
-// Engineer:
-//
-// Create Date: 15.05.2020 15:00:00
-// Design Name:
-// Module Name: tb_fib_rec
-// Project Name:
-// Target Devices:
-// Tool Versions:
-// Description:
-//
-// Dependencies:
-//
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-//
-//////////////////////////////////////////////////////////////////////////////////
 
-
-module tb_counter_N_4();
+module tb_();
     /*
         Cosas que tienes que corregir
         - El tipo del DUT
@@ -32,21 +12,22 @@ module tb_counter_N_4();
         -
     */
 
-    parameter testvector_length = 500;
-    parameter testvector_name = "counter_4.mem";
-    parameter testvector_bits = 4;
+    parameter testvector_length = 100;
+    parameter testvector_name = ".mem";                                 // <-----
+    parameter testvector_bits = ;                                       // <-----
 
     // Variables del simulador
     logic                       clk, reset;
-    logic [3:0]                 expected;   // Valor de salida esperado
-    logic [31:0]                vectornum, errors; // Iteradores de 32 bits
+    logic [:0]                 expected;                                // <-----
+    logic [31:0]                vectornum, errors;
     logic [testvector_bits-1:0] testvector [testvector_length-1:0];
-                                    // El arreglo que contendrá los vectores
 
-    // Variables del DUT - Design under Test
-    logic [3:0]  y;
 
-    counter_N #(4) DUT(clk, reset, y);
+    // Variables del DUT - Design under Test                            // <-----
+    logic [:]  x;
+    logic [:]  y;
+
+      DUT( );                                                           // <-----
 
     // Reloj, ajusta el periodo
     always begin
@@ -71,17 +52,17 @@ module tb_counter_N_4();
     // Recuerda ajustar las señales de entrada y salida.
     always @(posedge clk) begin
         #1;
-        {expected} = testvector[vectornum];
+        {BCD_in, expected} = testvector[vectornum];                   // <-----
     end
 
     // Canto Bajada -> Revisar salida
     // Esto debería ser editado para ajustarse a los otros módulos
     always @(negedge clk) begin
         if (~reset) begin
-            $display("%t: y = %d, expected = %d", $realtime, y, expected);
+            $display("%t: --- = %d, y = %b, expected = %b", $realtime, BCD_in, y, expected);// <-----
 
             if (y !== expected) begin
-                $error("Error: y = %d y no %d", y, expected);
+                $error("Error: Cuando -- = %d, y = %b y no %b", BCD_in, y, expected);       // <-----
                 errors = errors + 1;
             end
 

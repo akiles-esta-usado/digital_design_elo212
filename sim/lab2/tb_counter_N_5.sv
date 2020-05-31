@@ -1,26 +1,6 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company:
-// Engineer:
-//
-// Create Date: 15.05.2020 15:00:00
-// Design Name:
-// Module Name: tb_fib_rec
-// Project Name:
-// Target Devices:
-// Tool Versions:
-// Description:
-//
-// Dependencies:
-//
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-//
-//////////////////////////////////////////////////////////////////////////////////
 
-
-module tb_counter_4();
+module tb_counter_N_5();
     /*
         Cosas que tienes que corregir
         - El tipo del DUT
@@ -32,21 +12,21 @@ module tb_counter_4();
         -
     */
 
-    parameter testvector_length = 100;
-    parameter testvector_name = "counter_4.mem";
-    parameter testvector_bits = 4;
+    parameter testvector_length = 500;
+    parameter testvector_name = "counter_5.mem";
+    parameter testvector_bits = 5;
 
     // Variables del simulador
     logic                       clk, reset;
-    logic [3:0]                 expected;   // Valor de salida esperado
+    logic [4:0]                 expected;   // Valor de salida esperado
     logic [31:0]                vectornum, errors; // Iteradores de 32 bits
     logic [testvector_bits-1:0] testvector [testvector_length-1:0];
                                     // El arreglo que contendrá los vectores
 
     // Variables del DUT - Design under Test
-    logic [3:0]  y;
+    logic [4:0]  y;
 
-    counter_4 DUT(clk, reset, y);
+    counter_N #(5) DUT(clk, reset, y);
 
     // Reloj, ajusta el periodo
     always begin

@@ -1,26 +1,6 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company:
-// Engineer:
-//
-// Create Date: 15.05.2020 15:00:00
-// Design Name:
-// Module Name: tb_fib_rec
-// Project Name:
-// Target Devices:
-// Tool Versions:
-// Description:
-//
-// Dependencies:
-//
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-//
-//////////////////////////////////////////////////////////////////////////////////
 
-
-module tb_fib_rec();
+module tb_counter_N_4();
     /*
         Cosas que tienes que corregir
         - El tipo del DUT
@@ -32,26 +12,26 @@ module tb_fib_rec();
         -
     */
 
-    parameter testvector_length = 100;
-    parameter testvector_name = "fib_rec.mem";
-    parameter testvector_bits = 5;
+    parameter testvector_length = 500;
+    parameter testvector_name = "counter_4.mem";
+    parameter testvector_bits = 4;
 
     // Variables del simulador
     logic                       clk, reset;
-    logic                       expected;   // valor esperado de f
-    logic [31:0]                vectornum, errors; // Son iteradores de 32 bits
+    logic [3:0]                 expected;   // Valor de salida esperado
+    logic [31:0]                vectornum, errors; // Iteradores de 32 bits
     logic [testvector_bits-1:0] testvector [testvector_length-1:0];
+                                    // El arreglo que contendrá los vectores
 
-    // Variables del DUT - Design Under Test
-    logic [3:0]  BCD_in;
-    logic        y;
+    // Variables del DUT - Design under Test
+    logic [3:0]  y;
 
-    fib_rec DUT(BCD_in, y);
+    counter_N #(4) DUT(clk, reset, y);
 
     // Reloj, ajusta el periodo
     always begin
         clk = ~clk;
-        #5; // sleep(5)
+        #5;
     end
 
     // Obtención de datos, revisa instrucciones.md para ver como agregar el archivo al workspace
@@ -59,28 +39,29 @@ module tb_fib_rec();
         $readmemb(testvector_name, testvector);
         vectornum = 0;
         errors = 0;
-        reset = 1; // Es para que la verificación de los resultados no cambie, ignora clk
+        reset = 1;  // Detiene la lógica de verificación, los resultados no van a cambiar con clk.
         clk = 0;
 
-        #14;    // Esto es poco después del canto de bajada.
+        #14; // Esto es poco después del canto de bajada.
         reset = 0;
+
     end
 
     // Canto Subida -> Actualizar entrada
     // Recuerda ajustar las señales de entrada y salida.
     always @(posedge clk) begin
         #1;
-        {BCD_in, expected} = testvector[vectornum];
+        {expected} = testvector[vectornum];
     end
 
     // Canto Bajada -> Revisar salida
     // Esto debería ser editado para ajustarse a los otros módulos
     always @(negedge clk) begin
         if (~reset) begin
-            $display("%t: BCD_in = %d, y = %b, expected = %b", $realtime, BCD_in, y, expected);
+            $display("%t: y = %d, expected = %d", $realtime, y, expected);
 
             if (y !== expected) begin
-                $error("Error: Cuando BCD_in = %d, y = %b y no %b", BCD_in, y, expected);
+                $error("Error: y = %d y no %d", y, expected);
                 errors = errors + 1;
             end
 
