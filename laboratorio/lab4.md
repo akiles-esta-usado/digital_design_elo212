@@ -5,7 +5,6 @@
 * Diseñar, implementar y verificar un esqueleto de ALU (Unidad Aritmética Lógica)
 
 # Trabajo Previo
-
 No incide en la evaluación, pero entenderlo ayudará a entender el resto del trabajo.
 
 ### A

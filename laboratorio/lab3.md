@@ -46,7 +46,7 @@ Muestre resultados y discuta con el staff.
 ## 3.3 Contadores
 
 ### 3.3.1
-Describa un módulo parametrizado para un contador free-run de N bits
+Describa un módulo parametrizado para un contador free-run de N bits, N indica ancho de bits.
 
 Debe recibir una señal de reloj y un reset sincrónico
 
@@ -71,24 +71,26 @@ Averigue como implementar el contador con un reset asincrónico.
 
 Investigue y analice ventajas y desventajas
 
+En ninguna parte indica implementar.
+
 #### Enable
 Implemente un contador con enable.
 
-Funcionamiento del enable:
+Funcionamiento del enable al canto positivo:
 - 1: El contador incrementa.
 - 0: el contador mantiene el valor anterior.
 
 #### Enable con entrada para valor
 Añada '2' entradas nuevas:
-- load_value: Arreglo de N bits
 - load: Solo un bit
+- load_value: Arreglo de N bits
 
 Si load está en alto al llegar el canto positivo, el contador se actualiza con el valor indicado en load_value
 
 Si está bajo, el contador funciona normalmente.
 
 #### Contador decremental e incremental
-Se agrega la entrada dec
+Se agrega la entrada dec de 1 bit
 
 si dec está en alto al subir el relog, el contador opera de forma decremental.
 
