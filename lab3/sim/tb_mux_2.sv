@@ -46,9 +46,9 @@ module tb_mux_2();
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
     mux_2 dut(
-        .i_s  (in.s),
         .i_d0 (in.d0),
         .i_d1 (in.d1),
+        .i_s  (in.s),
         .o_y  (out.y)
     );
 

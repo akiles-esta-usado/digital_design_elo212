@@ -1,43 +1,40 @@
 `timescale 1ns / 1ps
 
 ////////////////////////////////////////////////////////////////////////
-// Template desarrollado por: Akiles Viza
 // V0.1
 // Este módulo debería simplificar el trabajo asociado a la verificación 
 // exhaustiva de diseños HDL simples.
 ////////////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////
-// Ajusta estos valores al testbench que estás realizando
-/////////////////////////////////////////////////////////
+///////////////////////////////////////////////////
+//  Las únicas cosas que hay que modificar son:
+//  - estructuras de entrada y salida (in_s, out_s)
+//  - Parámetros
+//  - tipo del DUT y puertos.
+///////////////////////////////////////////////////
+module tb_clock_divider_1();
+typedef struct packed {
+    logic       none;
+} in_s;
 
-localparam testvector_length = 100;    // Cantidad de vectores de prueba
-localparam testvector_name   = "decoder_3.mem"; // < nombre del archivo de vectores de prueba
-localparam testvector_bits   = 11;       // < cantidad de bits de vector de prueba
-localparam out_bits          = 8;       // < cantidad de bits de salida del DUT
-localparam period            = 10;     // duración de un periodo
-localparam n_periods         = 30;     // Cantidad de ciclos a realizar
-localparam reset_duration    = 3.2;       // Razón respecto al periodo
+typedef struct packed{
+    logic   clk_out;
+} out_s;
 
+parameter testvector_length = 100;    // Cantidad de vectores de prueba
+parameter testvector_name   = "clock_divider_1.mem"; // < nombre del archivo de vectores de prueba
+parameter testvector_bits   = 1;       // < cantidad de bits de vector de prueba
+parameter out_bits          = 1;       // < cantidad de bits de salida del DUT
+parameter period            = 10;     // duración de un periodo
+parameter n_periods         = 40;     // Cantidad de ciclos a realizar
+parameter reset_duration    = 3.2;       // Razón respecto al periodo
 
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb_decoder();
-
-    ///////////////////////////////////////////////////////////////////////
-    // Edita estas estructuras para que representen las entradas y salidas.
-    ///////////////////////////////////////////////////////////////////////
-    typedef struct packed {
-        logic [2:0] a;
-    } in_s;
-
-    typedef struct packed{
-        logic [7:0] y;
-    } out_s;
-
 
     logic   clk, reset;
+
     in_s    in;
     out_s   out;
     out_s   expected_late;
@@ -46,9 +43,10 @@ module tb_decoder();
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    decoder dut(
-        .i_a (in.a),
-        .o_y (out.y)
+    clock_divider #(1) dut(
+        .i_clk        (clk),
+        .i_reset      (reset),
+        .o_clk_out    (out.clk_out)
     );
 
     //////////////////////////////////////////////////////////////////////
@@ -130,7 +128,7 @@ module tb_decoder();
                 ///////////////////////////////////////////////////////////
                 // Aquí modifica si el DUT no ocupa alguna entrada o salida
                 ///////////////////////////////////////////////////////////
-                {o_in, o_expected} <= testvector[vectornum];
+                {o_expected} <= testvector[vectornum];
 
                 vectornum <= vectornum + 1;
             end
@@ -193,4 +191,8 @@ module tb_decoder();
 
     endmodule
     */
+
+    /////////////////////////////////////////
+    // Template desarrollado por: Akiles Viza
+    /////////////////////////////////////////
 endmodule

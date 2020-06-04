@@ -1,77 +1,116 @@
 `timescale 1ns / 1ps
 
+
+/*
+ *  Las únicas cosas que hay que modificar son:
+ *  - estructuras de entrada y salida
+ *  - Parámetros.
+ */
+typedef struct packed {
+    logic [3:0] BCD_in;
+} in_s;
+
+typedef struct packed{
+    logic       f;
+} out_s;
+
 module tb_fib_rec();
-    /*
-        Cosas que tienes que corregir
-        - El tipo del DUT
-        - El largo del vector de tests
-        - La cantidad de bits de cada test (IN + OUT)
-        - Si la salida es un vector, corrige el tipo de dato de 'expected'.
-        - En el canto de subida, el ajuste de las entradas
-        - El periodo del reloj, recuerda que para el canto de bajada la salida ya debe estar estable
-        -
-    */
 
-    parameter testvector_length = 100;
-    parameter testvector_name = "fib_rec.mem";
-    parameter testvector_bits = 5;
+    localparam testvector_length = 100;          // Cantidad de vectores de prueba
+    localparam testvector_name = "fib_rec.mem";  // nombre del archivo que contiene los vectores de prueba
+    localparam testvector_bits = 5;              // cantidad de bits del vector de prueba
+    localparam out_bits = 1;                     // cantidad de bits de salida
+    localparam period = 10;                      // duración de un periodo
+    localparam n_periods = 18;                   // Cantidad de ciclos a realizar
 
-    // Variables del simulador
-    logic                       clk, reset;
-    logic                       expected;   // valor esperado de f
-    logic [31:0]                vectornum, errors; // Son iteradores de 32 bits
+    logic   clk, reset;
+
+    in_s    in;
+    out_s   out;
+    out_s   expected;
+
+    reader reader_inst(
+        .i_clk(clk),
+        .i_reset(reset),
+        .o_in(in),
+        .o_expected(expected)
+    );
+
+    fib_rec fib_rec_inst(in.BCD_in, out.f);
+
+    verifier verifier_inst(
+        .i_clk(clk),
+        .i_reset(reset),
+        .i_out(out),
+        .i_expected(expected)
+    );
+
+    always begin
+        #(period*0.5);
+        clk = ~clk;
+    end
+
+    initial begin
+        clk   = 0;
+        reset = 1;
+
+        #(period*1.3);
+        reset = 0;
+
+        #(period*n_periods);
+        
+        $finish;
+
+    end
+
+endmodule
+
+module reader(
+        input  logic i_clk, i_reset,
+        output in_s  o_in,
+        output out_s o_expected
+    );
+    
+    logic [31:0]                vectornum;
     logic [testvector_bits-1:0] testvector [testvector_length-1:0];
 
-    // Variables del DUT - Design Under Test
-    logic [3:0]  BCD_in;
-    logic        y;
-
-    fib_rec DUT(BCD_in, y);
-
-    // Reloj, ajusta el periodo
-    always begin
-        clk = ~clk;
-        #5; // sleep(5)
-    end
-
-    // Obtención de datos, revisa instrucciones.md para ver como agregar el archivo al workspace
-    initial begin
-        $readmemb(testvector_name, testvector);
-        vectornum = 0;
-        errors = 0;
-        reset = 1; // Es para que la verificación de los resultados no cambie, ignora clk
-        clk = 0;
-
-        #14;    // Esto es poco después del canto de bajada.
-        reset = 0;
-    end
-
-    // Canto Subida -> Actualizar entrada
-    // Recuerda ajustar las señales de entrada y salida.
-    always @(posedge clk) begin
-        #1;
-        {BCD_in, expected} = testvector[vectornum];
-    end
-
-    // Canto Bajada -> Revisar salida
-    // Esto debería ser editado para ajustarse a los otros módulos
-    always @(negedge clk) begin
-        if (~reset) begin
-            $display("%t: BCD_in = %d, y = %b, expected = %b", $realtime, BCD_in, y, expected);
-
-            if (y !== expected) begin
-                $error("Error: Cuando BCD_in = %d, y = %b y no %b", BCD_in, y, expected);
-                errors = errors + 1;
-            end
-
-            vectornum = vectornum + 1;
-
-            if (testvector[vectornum] === {testvector_bits{1'bx}}) begin
-                $display("La verificación culmina con");
-                $display("%d tests y",vectornum);
-                $display("%d errores", errors);
-                $finish;
-            end
+    always_ff @(posedge i_clk) begin
+        if (i_reset) begin
+            $readmemb(testvector_name, testvector);
+            vectornum <= 0;
+        end
+        else begin
+            {o_in, o_expected} <= testvector[vectornum]; 
+            
+            vectornum <= vectornum + 1;
         end
     end
+endmodule
+
+module verifier(
+        input logic i_clk, i_reset,
+        input out_s i_out,
+        input out_s i_expected
+    );
+    logic [31:0] errors;
+
+    always_ff @(negedge i_clk) begin
+        if (~i_reset) begin
+            if (i_expected === {out_bits{1'bx}}) begin
+                $display("Prueba finalizada con %d errores", errors);
+                $finish;
+            end
+
+            $display("%t: out = {%b}; expected = {%b}", $realtime, i_out, i_expected);
+
+            if(i_out !== i_expected) begin
+                $display("ERROR");
+                errors <= errors + 1;
+            end
+        end
+        else begin
+            errors <= 0;
+        end
+    end
+
 endmodule

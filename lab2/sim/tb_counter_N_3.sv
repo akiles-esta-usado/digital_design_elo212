@@ -42,7 +42,7 @@ module tb_counter_N_3();
         reset = 1;  // Detiene la lógica de verificación, los resultados no van a cambiar con clk.
         clk = 0;
 
-        #14; // Esto es poco después del canto de bajada.
+        #24; // Esto es poco después del canto de bajada.
         reset = 0;
 
     end

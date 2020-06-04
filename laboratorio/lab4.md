@@ -104,6 +104,7 @@ No siempre un 1 significa encendido.
 
 ### Contexto
 El módulo de división de reloj es una implementación del concepto de generación de relojes de distinta frecuencia a partir de una frecuencia base.
+
 El parámetro representa el número máximo de cuentas
 
 Solo genera frecuencias aproximadas en función del parámetro de entrada.
@@ -114,7 +115,6 @@ Presenta limitantes en términos de usabilidad, el usuario debe realizar cálcul
 Modifique el archivo base del divisor de reloj para que el usuario ingrese la frecuencia del relog base y la frecuencia deseada del relog en MHz.
 
 En base a los dos parámetros, el módulo debe calcular los valores necesarios para obtener la frecuencia de salida aproximada a la indicada en el parámetro
-
 
 ### Testbenches
 Asuma que el reloj de entrada es de 100 MHz.
