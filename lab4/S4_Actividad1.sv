@@ -19,7 +19,7 @@
 // que no tienen valor y no se mostrarían bloques que no tengan bits.
 
 module S4_Actividad1 
-    #(parameter N = 16)
+    #(parameter N = 32)
     (
         input  logic [N-1:0] BCD_in,
         input  logic         clock, reset,

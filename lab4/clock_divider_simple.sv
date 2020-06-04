@@ -1,16 +1,14 @@
-` timescale 1ns/1ps
-// Este es un relog del tipo 'módulo', ya que cuando se llega al valor 
-// indicado, el relog reinicia, al igual que ocurre con el operador.
-module clock_divider 
-    #(parameter COUNTER_MAX = 32)
+`timescale 1ns/1ps
+
+module clock_divider_simple
+    #(parameter COUNTER_MAX = 4)
     (
         input  logic  i_clk, i_reset,
         output logic  o_clk
     );
 
     localparam DELAY_WIDTH = $clog2(COUNTER_MAX);
-    logic [DELAY_WIDTH-1:0] counter = 'd0;
-
+    logic [DELAY_WIDTH-1:0] counter;
 
     always_ff @(posedge i_clk) begin
         

@@ -12,34 +12,32 @@
 ///////////////////////////////////////////////////
 
 localparam period            = 10;     // duración de un periodo
-localparam n_periods         = 100000;     // Cantidad de ciclos a realizar
+localparam n_periods         = 10000000;     // Cantidad de ciclos a realizar
 localparam reset_duration    = 3.2;       // Razón respecto al periodo
 
 
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb_top_2();
+module tb_clock_divider_improved();
     timeunit 1ns;
     timeprecision 1ps;
 
     logic   clk, reset;
-    logic clock_out_50M;
-    logic clock_out_30M;
-    logic clock_out_10M;
-    logic clock_out_1M;
+    logic clk_out;
 
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    S4_Actividad2 dut (
-            .clock_100M     (clk),
-            .reset          (reset),
-            .clock_out_50M  (clock_out_50M),
-            .clock_out_30M  (clock_out_30M),
-            .clock_out_10M  (clock_out_10M),
-            .clock_out_1M   (clock_out_1M)
-        );
+    clock_divider #(
+        .FREC_IN_MHZ (100),
+        .FREC_OUT_MHZ(50)
+        ) 
+        dut1(
+        .i_clk        (clk),
+        .i_reset      (reset),
+        .o_clk        (clk_out)
+    );
 
     //////////////////////////////////////////////////////////////////////
     // De aquí para abajo no se necesita modificar nada.

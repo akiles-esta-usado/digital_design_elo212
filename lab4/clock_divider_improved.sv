@@ -12,7 +12,30 @@
 
 // TODO: TESTBENCH !!!
 
-module clk_divider 
+
+module clock_divider
+    #(
+        parameter FREC_IN_MHZ = 100,
+        parameter FREC_OUT_MHZ = 50
+    )(
+        input  logic  i_clk,
+        input  logic  i_reset,
+        output logic  o_clk
+    );
+
+    localparam COUNT_MAX = int'(0.5 * real'(FREC_IN_MHZ) / FREC_OUT_MHZ);
+
+    clock_divider_simple #(COUNT_MAX) clock_divider_instance (
+            .i_clk(i_clk),
+            .i_reset(i_reset),
+            .o_clk(o_clk)
+        );
+
+endmodule
+
+
+/*
+module clk_divider
     #(parameter clk_out = 50) 
     (
         input  logic  i_clk,
@@ -46,3 +69,5 @@ module clk_divider
 
     end
 endmodule
+
+*/

@@ -1,5 +1,3 @@
-`timescale 1ns / 1ps
-
 ////////////////////////////////////////////////////////////////////////
 // V0.1
 // Este módulo debería simplificar el trabajo asociado a la verificación 
@@ -34,7 +32,8 @@ localparam reset_duration    = 3.2;       // Razón respecto al periodo
 // Modifica el nombre del testbench
 ///////////////////////////////////
 module tb-testbench-template();
-
+    timeunit      1ns;
+    timeprecision 1ps;
     logic   clk, reset;
 
     in_s    in;

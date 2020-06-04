@@ -15,7 +15,7 @@ Código que describe un divisor de frecuencias.
 
 COUNTER_MAX es un parámetro que permite al usuario setear un número entero positivo arbitrario.
 
-Una vez entendido el código, derive una expresión general que permita obtener la frecuencia de relog de salida clk_out como función del a frecuencia de reloj de entrada clk_in y el parámetro COUNTER_MAX.
+Una vez entendido el código, derive una expresión matemática que permita obtener la frecuencia de reloj de salida clk_out como función del a frecuencia de reloj de entrada clk_in y el parámetro COUNTER_MAX.
 
 Utilizando la expresión obtenida, indique el valor de COUNTER_MAX para obtener un reloj de salida de 30Hz a partir de un relog de entrada de 10ns
 
@@ -128,3 +128,43 @@ Describa un módulo que instancie múltiples copias del módulo base, utilizando
 FIGURA 3: Diagrama de Alto nivel para el módulo generador de frecuencias de reloj.
 
 ## 3.3 ALU básica (50)
+
+### Contexto
+las ALU son CIRCUITOS COMBINACIONALES que realizan operaciones aritméticas y lógicas sobre un par de entradas.
+
+FIGURA4: ALU Genérica, indica principales entradas y salidas.
+
+#### Entradas
+2 operandos de N bits.
+
+Señal de selección, indica la operación a realizar, tiene M bits y el tamaño depende de la cantidad de operaciones soportadas.
+
+#### Salidas
+el resultado de la operación. Tiene N bits
+
+Status Flags, entregan información sobre la última operación según esta descripción:
+- N: resultado negativo
+- Z: resultado cero
+- C: la última operación provocó carry out
+- V: overflow
+
+Figura 4: Diagrama Alto nivel de ALU
+
+### Funcionalidad del módulo
+Implementar un core de ALU con ancho de bits parametrizable, según:
+
+- Tiene 2 operandos de entrada, A y B, el ancho de bits por defecto es de 8
+- La operación se determina por la entrada OpCode de 2 bits:
+    * 00: suma
+    * 01  resta
+    * 10  OR
+    * 11  AND
+- La salida debe ser del mismo tamaño que los operandos
+- Es un circuito combinacional
+
+### Criterios de Éxito
+Realize un testbench con operaciones de referencia
+
+Busque ejemplos de operaciones que generen condiciones de excepción para verificar las flags
+
+Debe manejar conceptos de aritmética binaria con número finito de bits, representación de números con signo y sin signo.

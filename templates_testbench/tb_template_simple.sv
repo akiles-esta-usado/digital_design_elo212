@@ -11,35 +11,38 @@
 //  - tipo del DUT y puertos.
 ///////////////////////////////////////////////////
 
-localparam period            = 10;     // duración de un periodo
-localparam n_periods         = 100000;     // Cantidad de ciclos a realizar
-localparam reset_duration    = 3.2;       // Razón respecto al periodo
+typedef struct packed {
+    logic       none;
+} in_s;
 
+typedef struct packed{
+    logic       none;
+} out_s;
+
+
+localparam period            = 10;     // duración de un periodo
+localparam n_periods         = 40;     // Cantidad de ciclos a realizar
+localparam reset_duration    = 3.2;    // Razón respecto al periodo
 
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb_top_2();
-    timeunit 1ns;
+module tb-testbench-template-simple();
+    timeunit      1ns;
     timeprecision 1ps;
 
     logic   clk, reset;
-    logic clock_out_50M;
-    logic clock_out_30M;
-    logic clock_out_10M;
-    logic clock_out_1M;
+
+    in_s    in;
+    out_s   out;
 
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    S4_Actividad2 dut (
-            .clock_100M     (clk),
-            .reset          (reset),
-            .clock_out_50M  (clock_out_50M),
-            .clock_out_30M  (clock_out_30M),
-            .clock_out_10M  (clock_out_10M),
-            .clock_out_1M   (clock_out_1M)
-        );
+    the-module dut(
+        .i_clk        (clk),
+        .i_reset      (reset)
+    );
 
     //////////////////////////////////////////////////////////////////////
     // De aquí para abajo no se necesita modificar nada.
