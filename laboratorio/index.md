@@ -9,3 +9,6 @@
 [lab4 md](lab4.md)
 
 [exp_lab4 md](exp_lab4.md)
+
+
+[digital_design_book md](digital_design_book.md)

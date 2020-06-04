@@ -37,8 +37,7 @@ module tb_clock_divider_simple();
         dut1(
         .i_clk        (clk),
         .i_reset      (reset),
-        .o_clk        (clk_out),
-        .o_counter    (counter)
+        .o_clk        (clk_out)
     );
 
     //////////////////////////////////////////////////////////////////////

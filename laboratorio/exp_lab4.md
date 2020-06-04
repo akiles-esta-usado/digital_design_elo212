@@ -10,6 +10,6 @@ mux_8               listo
 decoder             listo
 Actividad1          listo
 
-clock_divider
-Actividad2
+clock_divider       listo
+Actividad2          listo
 Actividad3

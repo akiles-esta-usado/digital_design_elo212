@@ -24,14 +24,14 @@ module tb_clock_divider_improved();
     timeprecision 1ps;
 
     logic   clk, reset;
-    logic clk_out;
+    logic   clk_out;
 
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
     clock_divider #(
         .FREC_IN_MHZ (100),
-        .FREC_OUT_MHZ(50)
+        .FREC_OUT_MHZ(10)
         ) 
         dut1(
         .i_clk        (clk),

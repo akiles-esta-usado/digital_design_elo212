@@ -1,14 +1,14 @@
 `timescale 1ns / 1ps
 
 module S4_Actividad2 (
-    input  logic  clock_100M,
-    input  logic  reset,
+        input  logic  clock_100M,
+        input  logic  reset,
 
-    output logic clock_out_50M,
-    output logic clock_out_30M,
-    output logic clock_out_10M,
-    output logic clock_out_1M
-);
+        output logic clock_out_50M,
+        output logic clock_out_30M,
+        output logic clock_out_10M,
+        output logic clock_out_1M
+    );
 
 clock_divider #(
         .FREC_IN_MHZ(100), 
