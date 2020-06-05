@@ -7,7 +7,8 @@ module S4_Actividad3 #(parameter N=8)(
     );
     logic   Neg, Z, C, V;
     logic [32:0] Sum; //variable que guardara la suma
-    assign condinvb = OpCode[0] ? ~b : b;
+    assign Status = {Neg, Z, C, V};
+    assign condinvb = OpCode[0] ? ~b : b; 
     assign Sum = A + condinvb + OpCode[0];
 
     // Operandos y Resultado
