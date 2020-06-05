@@ -18,7 +18,7 @@ module fib_circuit(
 
     counter_4 counter(i_clk, i_reset, count);
 
-    BCD_to_sevenSeg to_7seg (count, o_sevenSeg);
+    BCD_to_seven_seg to_7seg (count, o_sevenSeg);
 
     fib_rec fib(count, o_fib);
 

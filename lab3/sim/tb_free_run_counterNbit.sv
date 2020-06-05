@@ -25,12 +25,12 @@ typedef struct packed{
 } out_s;
 
 parameter testvector_length = 100;    // Cantidad de vectores de prueba
-parameter testvector_name   = "free_run_counterNbit_5_dec.mem"; // < nombre del archivo de vectores de prueba
-parameter testvector_bits   = 19;       // < cantidad de bits de vector de prueba
+parameter testvector_name   = "free_run_counterNbit_1_simple.mem"; // < nombre del archivo de vectores de prueba
+parameter testvector_bits   = 19;      // < cantidad de bits de vector de prueba
 parameter out_bits          = 8;       // < cantidad de bits de salida del DUT
-parameter period            = 10;     // duración de un periodo
-parameter n_periods         = 40;     // Cantidad de ciclos a realizar
-parameter reset_duration    = 3.2;       // Razón respecto al periodo
+parameter period            = 10; // duración de un periodo
+parameter n_periods         = 10000000;      // Cantidad de ciclos a realizar
+parameter reset_duration    = 3.2;     // Razón respecto al periodo
 
 ///////////////////////////////////
 // Modifica el nombre del testbench

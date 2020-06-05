@@ -13,7 +13,7 @@
 //  - tipo del DUT y puertos.
 ///////////////////////////////////////////////////
 
-localparam N = 10;
+localparam N = 32;
 
 typedef struct packed {
     logic [N-1:0] BCD_in;
@@ -26,7 +26,7 @@ typedef struct packed{
 
 
 localparam testvector_length = 100;    // Cantidad de vectores de prueba
-localparam testvector_name   = "top_1_10.mem"; // < nombre del archivo de vectores de prueba
+localparam testvector_name   = "top_1_32.mem"; // < nombre del archivo de vectores de prueba
 localparam testvector_bits   = N + 16;       // < cantidad de bits de vector de prueba
 localparam out_bits          = 16;       // < cantidad de bits de salida del DUT
 localparam period            = 10;     // duración de un periodo
