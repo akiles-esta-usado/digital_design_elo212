@@ -23,7 +23,7 @@ module S4_Actividad1
     (
         input  logic [N-1:0] BCD_in,
         input  logic         clock, reset,
-        output logic [7:0]   segments,
+        output logic [6:0]   segments,
         output logic [7:0]   anodos
     );
 
@@ -64,7 +64,7 @@ module S4_Actividad1
         .o_seven_seg(segments)
         );
     
-    decoder #(3) decoder_inst (
+    decoder_one_cold #(3) decoder_inst (
         .i_a (select),
         .o_y (anodos)
     );

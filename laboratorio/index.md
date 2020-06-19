@@ -10,5 +10,9 @@
 
 [exp_lab4 md](exp_lab4.md)
 
+[lab5 md](lab5.md)
+
 
 [digital_design_book md](digital_design_book.md)
+
+[reglas_del_juego md](reglas_del_juego.md)

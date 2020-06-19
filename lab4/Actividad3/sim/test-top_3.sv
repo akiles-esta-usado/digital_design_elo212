@@ -52,18 +52,15 @@ module tb_top_3();
     out_s   out;
     out_s   expected;
 
-    // logic [4:0] just_testing;
-
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    S4_Actividad3 #(4) dut(
+    S4_Actividad3 #(.N(4)) dut(
         .A      (in.A),
         .B      (in.B),
         .OpCode (in.opcode),
         .Result (out.result),
         .Status (out.status)
-        // ,.just_testing(just_testing)
     );
 
     //////////////////////////////////////////////////////////////////////

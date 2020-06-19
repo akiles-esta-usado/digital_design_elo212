@@ -13,30 +13,27 @@
 //  - tipo del DUT y puertos.
 ///////////////////////////////////////////////////
 
-localparam N = 32;
-
 typedef struct packed {
-    logic [N-1:0] BCD_in;
+    logic [3:0] BCD_in;
 } in_s;
 
 typedef struct packed{
-    logic [7:0] segments;
-    logic [7:0] anodos;
+    logic [6:0] seven_seg;
 } out_s;
 
-
 localparam testvector_length = 100;    // Cantidad de vectores de prueba
-localparam testvector_name   = "top_1_32.mem"; // < nombre del archivo de vectores de prueba
-localparam testvector_bits   = N + 16;       // < cantidad de bits de vector de prueba
-localparam out_bits          = 16;       // < cantidad de bits de salida del DUT
+localparam testvector_name   = "BCD_to_seven_seg.mem"; // < nombre del archivo de vectores de prueba
+localparam testvector_bits   = 11;       // < cantidad de bits de vector de prueba
+localparam out_bits          = 7;       // < cantidad de bits de salida del DUT
 localparam period            = 10;     // duración de un periodo
 localparam n_periods         = 40;     // Cantidad de ciclos a realizar
-localparam reset_duration    = 3.2;       // cantidad de periodos antes de apagar el reset.
+localparam reset_duration    = 3.2;       // Razón respecto al periodo
 
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb_top_1();
+module tb_BCD_to_seven_seg();
+
 
     logic   clk, reset;
 
@@ -48,12 +45,9 @@ module tb_top_1();
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    S4_Actividad1 #(N) dut(
-        .clock      (clk),
-        .reset      (reset),
-        .BCD_in     (in.BCD_in),
-        .segments   (out.segments),
-        .anodos     (out.anodos)
+    BCD_to_seven_seg dut(
+        .i_BCD      (in.BCD_in),
+        .o_seven_seg(out.seven_seg)
     );
 
     //////////////////////////////////////////////////////////////////////
@@ -69,6 +63,34 @@ module tb_top_1();
         .o_in(in),
         .o_expected(expected_late)
     );
+
+    //////////////////////////////////////////////////////////////////
+    // Este bloque genera un retraso en un ciclo entre expected_late y 
+    // expected_early
+    //////////////////////////////////////////////////////////////////
+    /*
+    just_delay delay_inst(
+
+        .i_clk      (clk),
+        .i_reset    (reset),
+        .i_expected (expected_late),
+        .o_expected (expected_early)
+    );
+    /*
+
+    ///////////////////////////////////////////////////////////////////////
+    // Si se llegara a ocupar el módulo verifier, revisar bien si debe usar 
+    // expected_late o expected_early. Tienen un ciclo de diferencia
+    ///////////////////////////////////////////////////////////////////////
+    /* 
+    verifier verifier_inst(
+        .i_clk(clk),
+        .i_reset(reset),
+        .i_out(out),
+        .i_expected(expected) // ¿Late o Early?
+    );
+
+    */
 
     always #(period*0.5) clk = ~clk;
 
@@ -118,6 +140,67 @@ module tb_top_1();
             end
         end
     endmodule
+
+    ///////////////////////////////////////////////////////////////////
+    // just_delay
+    //
+    // Debido al retraso que puede generar el DUT cuando es secuencial,
+    // es necesario retrasar también la salida esperada
+    ///////////////////////////////////////////////////////////////////
+    
+    module just_delay(
+            input  logic i_clk, i_reset,
+            input  out_s  i_expected,
+            output out_s  o_expected
+        );
+
+        always_ff @(posedge i_clk) begin
+            o_expected <= i_expected;
+        end
+
+
+    endmodule
+
+    /*  
+
+    ///////////////////////////////////////////////////////////////////
+    // verifier
+    //
+    // Este módulo verifica que la salida dada por el DUT sea la misma
+    // que se indica en el archivo de memoria.
+    //
+    // No es tan importante para módulos 'simples'.
+    ///////////////////////////////////////////////////////////////////
+
+    module verifier(
+            input logic i_clk, i_reset,
+            input out_s i_out,
+            input out_s i_expected
+        );
+
+        logic [31:0] errors;
+
+        always_ff @(negedge i_clk) begin
+            if (~i_reset) begin
+                if (i_expected === {out_bits{1'bx}}) begin
+                    $display("Prueba finalizada con %d errores", errors);
+                    $finish;
+                end
+
+                $display("%t: out = {%b}; expected = {%b}", $realtime, i_out, i_expected);
+
+                if(i_out !== i_expected) begin
+                    $display("ERROR");
+                    errors <= errors + 1;
+                end
+            end
+            else begin
+                errors <= 0;
+            end
+        end
+
+    endmodule
+    */
 
     /////////////////////////////////////////
     // Template desarrollado por: Akiles Viza

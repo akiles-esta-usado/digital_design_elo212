@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_top_3_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_clock_divider_simple_sv " />
+            <top_module name="glbl" />
+            <top_module name="tb_top_3" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="39875fs"></ZoomStartTime>
+      <ZoomEndTime time="94026fs"></ZoomEndTime>
+      <Cursor1Time time="85000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="137"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject fp_name="divider36" type="divider">
+      <obj_property name="label">Entradas</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top_3/in.A">
+      <obj_property name="ElementShortName">.A[3:0]</obj_property>
+      <obj_property name="ObjectShortName">.A[3:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CellHeight">41</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top_3/in.B">
+      <obj_property name="ElementShortName">.B[3:0]</obj_property>
+      <obj_property name="ObjectShortName">.B[3:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CellHeight">40</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top_3/in.opcode">
+      <obj_property name="ElementShortName">.opcode[1:0]</obj_property>
+      <obj_property name="ObjectShortName">.opcode[1:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CellHeight">40</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider91" type="divider">
+      <obj_property name="label">Valores Obtenidos</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top_3/out.result">
+      <obj_property name="ElementShortName">.result[3:0]</obj_property>
+      <obj_property name="ObjectShortName">.result[3:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CellHeight">40</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top_3/out.status[3]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[3]</obj_property>
+      <obj_property name="ObjectShortName">[3]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CellHeight">15</obj_property>
+      <obj_property name="label">[3] N</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top_3/out.status[2]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[2]</obj_property>
+      <obj_property name="ObjectShortName">[2]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CellHeight">15</obj_property>
+      <obj_property name="label">[2] Z</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top_3/out.status[1]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[1]</obj_property>
+      <obj_property name="ObjectShortName">[1]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CellHeight">15</obj_property>
+      <obj_property name="label">[1] C</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top_3/out.status[0]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[0]</obj_property>
+      <obj_property name="ObjectShortName">[0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CellHeight">15</obj_property>
+      <obj_property name="label">[0] V</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider90" type="divider">
+      <obj_property name="label">Valores Esperados</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_top_3/expected.result">
+      <obj_property name="ElementShortName">.result[3:0]</obj_property>
+      <obj_property name="ObjectShortName">.result[3:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CellHeight">36</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top_3/expected.status[3]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[3]</obj_property>
+      <obj_property name="ObjectShortName">[3]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CellHeight">15</obj_property>
+      <obj_property name="label">[3] N</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top_3/expected.status[2]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[2]</obj_property>
+      <obj_property name="ObjectShortName">[2]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CellHeight">15</obj_property>
+      <obj_property name="label">[2] Z</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top_3/expected.status[1]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[1]</obj_property>
+      <obj_property name="ObjectShortName">[1]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CellHeight">15</obj_property>
+      <obj_property name="label">[1] C</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_top_3/expected.status[0]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[0]</obj_property>
+      <obj_property name="ObjectShortName">[0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CellHeight">15</obj_property>
+      <obj_property name="label">[0] V</obj_property>
+   </wvobject>
+</wave_config>
