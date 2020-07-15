@@ -12,6 +12,9 @@
 
 [lab5 md](lab5.md)
 
+[lab6 md](lab6.md)
+
+[lab7 md](lab7.md)
 
 [digital_design_book md](digital_design_book.md)
 

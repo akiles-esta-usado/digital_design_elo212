@@ -14,40 +14,50 @@
 ///////////////////////////////////////////////////
 
 typedef struct packed {
-    logic [3:0] BCD_in;
+    logic [7:0] [3:0] d;
+    logic [2:0] s;
 } in_s;
 
 typedef struct packed{
-    logic [6:0] seven_seg;
+    logic [3:0] y;
 } out_s;
 
+
 localparam testvector_length = 100;    // Cantidad de vectores de prueba
-localparam testvector_name   = "BCD_to_seven_seg.mem"; // < nombre del archivo de vectores de prueba
-localparam testvector_bits   = 11;       // < cantidad de bits de vector de prueba
-localparam out_bits          = 7;       // < cantidad de bits de salida del DUT
+localparam testvector_name   = "mux_8.mem"; // < nombre del archivo de vectores de prueba
+localparam testvector_bits   = 39;       // < cantidad de bits de vector de prueba
+localparam out_bits          = 4;       // < cantidad de bits de salida del DUT
 localparam period            = 10;     // duración de un periodo
-localparam n_periods         = 40;     // Cantidad de ciclos a realizar
+localparam n_periods         = 20;     // Cantidad de ciclos a realizar
 localparam reset_duration    = 3.2;       // Razón respecto al periodo
 
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb_BCD_to_seven_seg();
-
+module tb_mux_8();
 
     logic   clk, reset;
 
     in_s    in;
     out_s   out;
-    out_s   expected;
+    out_s   expected_late;
+    out_s   expected_early;
 
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    BCD_to_seven_seg dut(
-        .i_BCD      (in.BCD_in),
-        .o_seven_seg(out.seven_seg)
+    // mux_8 #(4) dut (
+    //     in.d0, in.d1, in.d2, in.d3, in.d4, in.d5, in.d6, in.d7, 
+    //     in.s, 
+    //     out.y
+    // );
+    
+    mux #(.WIDTH(4), .N_IN(8)) dut (
+        in.d, 
+        in.s, 
+        out.y
     );
+    
 
     //////////////////////////////////////////////////////////////////////
     // De aquí para abajo no se necesita modificar nada.
@@ -60,9 +70,36 @@ module tb_BCD_to_seven_seg();
         .i_clk(clk),
         .i_reset(reset),
         .o_in(in),
-        .o_expected(expected)
+        .o_expected(expected_late)
     );
 
+    //////////////////////////////////////////////////////////////////
+    // Este bloque genera un retraso en un ciclo entre expected_late y 
+    // expected_early
+    //////////////////////////////////////////////////////////////////
+    /*
+    just_delay delay_inst(
+
+        .i_clk      (clk),
+        .i_reset    (reset),
+        .i_expected (expected_late),
+        .o_expected (expected_early)
+    );
+    /*
+
+    ///////////////////////////////////////////////////////////////////////
+    // Si se llegara a ocupar el módulo verifier, revisar bien si debe usar 
+    // expected_late o expected_early. Tienen un ciclo de diferencia
+    ///////////////////////////////////////////////////////////////////////
+    /* 
+    verifier verifier_inst(
+        .i_clk(clk),
+        .i_reset(reset),
+        .i_out(out),
+        .i_expected(expected) // ¿Late o Early?
+    );
+
+    */
 
     always #(period*0.5) clk = ~clk;
 
@@ -114,6 +151,28 @@ module tb_BCD_to_seven_seg();
     endmodule
 
     ///////////////////////////////////////////////////////////////////
+    // just_delay
+    //
+    // Debido al retraso que puede generar el DUT cuando es secuencial,
+    // es necesario retrasar también la salida esperada
+    ///////////////////////////////////////////////////////////////////
+    
+    module just_delay(
+            input  logic i_clk, i_reset,
+            input  out_s  i_expected,
+            output out_s  o_expected
+        );
+
+        always_ff @(posedge i_clk) begin
+            o_expected <= i_expected;
+        end
+
+
+    endmodule
+
+    /*  
+
+    ///////////////////////////////////////////////////////////////////
     // verifier
     //
     // Este módulo verifica que la salida dada por el DUT sea la misma
@@ -150,7 +209,7 @@ module tb_BCD_to_seven_seg();
         end
 
     endmodule
-
+    */
 
     /////////////////////////////////////////
     // Template desarrollado por: Akiles Viza

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_ALU_display_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_ALU_sv " />
+            <top_module name="glbl" />
+            <top_module name="tb_ALU_display" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="416125fs"></ZoomStartTime>
+      <ZoomEndTime time="471176fs"></ZoomEndTime>
+      <Cursor1Time time="462000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="108"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wave_markers>
+      <marker label="" time="32000" />
+      <marker label="" time="122000" />
+      <marker label="" time="212000" />
+      <marker label="" time="302000" />
+   </wave_markers>
+   <wvobject type="logic" fp_name="/tb_ALU_display/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_ALU_display/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider5" type="divider">
+      <obj_property name="label">ENTRADAS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_ALU_display/in.A">
+      <obj_property name="ElementShortName">.A[31:0]</obj_property>
+      <obj_property name="ObjectShortName">.A[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_ALU_display/in.B">
+      <obj_property name="ElementShortName">.B[31:0]</obj_property>
+      <obj_property name="ObjectShortName">.B[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_ALU_display/in.OpCode">
+      <obj_property name="ElementShortName">.OpCode[1:0]</obj_property>
+      <obj_property name="ObjectShortName">.OpCode[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider6" type="divider">
+      <obj_property name="label">SALIDAS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_ALU_display/out.segments">
+      <obj_property name="ElementShortName">.segments[6:0]</obj_property>
+      <obj_property name="ObjectShortName">.segments[6:0]</obj_property>
+      <wvobject type="logic" fp_name="/tb_ALU_display/out.segments[6]">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">[6]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_ALU_display/out.segments[5]">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">[5]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_ALU_display/out.segments[4]">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_ALU_display/out.segments[3]">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_ALU_display/out.segments[2]">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_ALU_display/out.segments[1]">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_ALU_display/out.segments[0]">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_ALU_display/out.anodes[7]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[7]</obj_property>
+      <obj_property name="ObjectShortName">[7]</obj_property>
+      <obj_property name="label">AN[7]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_ALU_display/out.anodes[6]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[6]</obj_property>
+      <obj_property name="ObjectShortName">[6]</obj_property>
+      <obj_property name="label">AN[6]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_ALU_display/out.anodes[5]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[5]</obj_property>
+      <obj_property name="ObjectShortName">[5]</obj_property>
+      <obj_property name="label">AN[5]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_ALU_display/out.anodes[4]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[4]</obj_property>
+      <obj_property name="ObjectShortName">[4]</obj_property>
+      <obj_property name="label">AN[4]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_ALU_display/out.anodes[3]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[3]</obj_property>
+      <obj_property name="ObjectShortName">[3]</obj_property>
+      <obj_property name="label">AN[3]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_ALU_display/out.anodes[2]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[2]</obj_property>
+      <obj_property name="ObjectShortName">[2]</obj_property>
+      <obj_property name="label">AN[2]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_ALU_display/out.anodes[1]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[1]</obj_property>
+      <obj_property name="ObjectShortName">[1]</obj_property>
+      <obj_property name="label">AN[1]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_ALU_display/out.anodes[0]">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">[0]</obj_property>
+      <obj_property name="ObjectShortName">[0]</obj_property>
+      <obj_property name="label">AN[0]</obj_property>
+   </wvobject>
+</wave_config>

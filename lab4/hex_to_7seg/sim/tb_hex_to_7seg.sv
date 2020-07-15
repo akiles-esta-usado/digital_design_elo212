@@ -13,40 +13,47 @@
 //  - tipo del DUT y puertos.
 ///////////////////////////////////////////////////
 
+localparam N = 10;
+
 typedef struct packed {
-    logic [3:0] BCD_in;
+    logic [N-1:0] BCD_in;
 } in_s;
 
 typedef struct packed{
-    logic [6:0] seven_seg;
+    logic [6:0] segments;
+    logic [7:0] anodos;
 } out_s;
 
+
 localparam testvector_length = 100;    // Cantidad de vectores de prueba
-localparam testvector_name   = "BCD_to_seven_seg.mem"; // < nombre del archivo de vectores de prueba
-localparam testvector_bits   = 11;       // < cantidad de bits de vector de prueba
-localparam out_bits          = 7;       // < cantidad de bits de salida del DUT
+localparam testvector_name   = "hex_to_7seg_10.mem"; // < nombre del archivo de vectores de prueba
+localparam testvector_bits   = N + 15;       // < cantidad de bits de vector de prueba
+localparam out_bits          = 15;       // < cantidad de bits de salida del DUT
 localparam period            = 10;     // duración de un periodo
 localparam n_periods         = 40;     // Cantidad de ciclos a realizar
-localparam reset_duration    = 3.2;       // Razón respecto al periodo
+localparam reset_duration    = 3.2;       // cantidad de periodos antes de apagar el reset.
 
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb_BCD_to_seven_seg();
-
+module tb_hex_to_7seg();
 
     logic   clk, reset;
 
     in_s    in;
     out_s   out;
-    out_s   expected;
+    out_s   expected_late;
+    out_s   expected_early;
 
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    BCD_to_seven_seg dut(
-        .i_BCD      (in.BCD_in),
-        .o_seven_seg(out.seven_seg)
+    hex_to_7seg #(N) dut(
+        .clock      (clk),
+        .reset      (reset),
+        .BCD_in     (in.BCD_in),
+        .segments   (out.segments),
+        .anodos     (out.anodos)
     );
 
     //////////////////////////////////////////////////////////////////////
@@ -60,9 +67,8 @@ module tb_BCD_to_seven_seg();
         .i_clk(clk),
         .i_reset(reset),
         .o_in(in),
-        .o_expected(expected)
+        .o_expected(expected_late)
     );
-
 
     always #(period*0.5) clk = ~clk;
 
@@ -112,45 +118,6 @@ module tb_BCD_to_seven_seg();
             end
         end
     endmodule
-
-    ///////////////////////////////////////////////////////////////////
-    // verifier
-    //
-    // Este módulo verifica que la salida dada por el DUT sea la misma
-    // que se indica en el archivo de memoria.
-    //
-    // No es tan importante para módulos 'simples'.
-    ///////////////////////////////////////////////////////////////////
-
-    module verifier(
-            input logic i_clk, i_reset,
-            input out_s i_out,
-            input out_s i_expected
-        );
-
-        logic [31:0] errors;
-
-        always_ff @(negedge i_clk) begin
-            if (~i_reset) begin
-                if (i_expected === {out_bits{1'bx}}) begin
-                    $display("Prueba finalizada con %d errores", errors);
-                    $finish;
-                end
-
-                $display("%t: out = {%b}; expected = {%b}", $realtime, i_out, i_expected);
-
-                if(i_out !== i_expected) begin
-                    $display("ERROR");
-                    errors <= errors + 1;
-                end
-            end
-            else begin
-                errors <= 0;
-            end
-        end
-
-    endmodule
-
 
     /////////////////////////////////////////
     // Template desarrollado por: Akiles Viza

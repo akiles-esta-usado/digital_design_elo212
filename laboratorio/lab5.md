@@ -28,7 +28,36 @@ Identifique restricciones en el tamaño de los datos.
 Aplique los principios de jerarquia y modularidad.
 
 ## 2.3 ALU con entradas registradas.
-FIGURA 2
+Utilizando módulos anteriores, extienda el diseño anterior para agregar la funcionalizad de la FIGURA 2
+
+El comportamiento de esta ALU es el siguiente.
+
+### Bus de entrada
+Éxiste un único bus conectado a A, B, OpCode
+
+### Bancos de registros
+Se conectan a las entradas de la ALU
+
+Solo cuando se activa la señal de carga, el valor del registro se actualiza con el valor actual del bus de datos.
+
+Si la señal de carga no está activada, los cambios del bus no se reflejan en la ALU
+
+### Salida de la ALU
+El resultado de la operacion actual solo se propaga a los pines de salida si se activa UpdateRes.
+
+### Reset
+lleva el valor de salida de los registros a un valor conocido.
+
+### Recomendaciones
+Xilinx tiene módulos que realizan esta tarea, pueden servir de guía.
+
+Una vez descrito el diseño, elaborated design y Síntesis lógica.
+
+Mapee pines a interfaces de la tarjeta.
+
+Analice y discuta restricciones
+
+NO TERMINO DE LEERLO
 
 ## 2.4 Notación Polaca Inversa.
 Investigue que es la notación polaca inversa
@@ -41,5 +70,3 @@ Los operandos y el operador deben ser ingresados en cierto orden.
 
 ### Dudas:
 - una calculadora rpn debería tener un buffer para guardar los datos anteriores, como lo hacemos?
-
-
