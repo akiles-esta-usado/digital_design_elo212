@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_semaforo_led_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_semaforo_led" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="214000fs"></ZoomStartTime>
+      <ZoomEndTime time="329201fs"></ZoomEndTime>
+      <Cursor1Time time="275000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="104"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="15" />
+   <wvobject type="logic" fp_name="/tb_semaforo_led/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_semaforo_led/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_semaforo_led/TA">
+      <obj_property name="ElementShortName">TA</obj_property>
+      <obj_property name="ObjectShortName">TA</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_semaforo_led/TB">
+      <obj_property name="ElementShortName">TB</obj_property>
+      <obj_property name="ObjectShortName">TB</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider30" type="divider">
+      <obj_property name="label">SEMAFORO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_semaforo_led/DUT/sem_inst/state">
+      <obj_property name="ElementShortName">state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">state[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_semaforo_led/DUT/sem_inst/next_state">
+      <obj_property name="ElementShortName">next_state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">next_state[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider26" type="divider">
+      <obj_property name="label">SALIDA A</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_semaforo_led/tricolor_A.led_r">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">.led_r</obj_property>
+      <obj_property name="ObjectShortName">.led_r</obj_property>
+      <obj_property name="label">A.red</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_semaforo_led/tricolor_A.led_g">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">.led_g</obj_property>
+      <obj_property name="ObjectShortName">.led_g</obj_property>
+      <obj_property name="label">A.green</obj_property>
+      <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_semaforo_led/tricolor_A.led_b">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">.led_b</obj_property>
+      <obj_property name="ObjectShortName">.led_b</obj_property>
+      <obj_property name="label">A.blue</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider27" type="divider">
+      <obj_property name="label">SALIDA B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_semaforo_led/tricolor_B.led_r">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">.led_r</obj_property>
+      <obj_property name="ObjectShortName">.led_r</obj_property>
+      <obj_property name="label">B.red</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_semaforo_led/tricolor_B.led_g">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">.led_g</obj_property>
+      <obj_property name="ObjectShortName">.led_g</obj_property>
+      <obj_property name="label">B.green</obj_property>
+      <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_semaforo_led/tricolor_B.led_b">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">.led_b</obj_property>
+      <obj_property name="ObjectShortName">.led_b</obj_property>
+      <obj_property name="label">B.blue</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+</wave_config>

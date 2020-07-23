@@ -4,42 +4,50 @@
 //  - Parámetros
 //  - tipo del DUT y puertos.
 ///////////////////////////////////////////////////
-typedef struct packed {
-    logic       none;
-} in_s;
-
-typedef struct packed{
-    logic       none;
-} out_s;
 
 localparam period         = 10;           // duración de un periodo
 localparam test_duration  = 40  * period; // duración máxima del test
 localparam reset_duration = 3.2 * period; // duración del reset
 
+
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb-testbench-name();
+module tb_level_to_pulse();
     timeunit      1ns;
     timeprecision 1ps;
 
     logic   clk, reset;
-    in_s  in;
-    out_s out;
+    logic   in, out_fall, out_rise;
 
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    design-under-test dut(
+    level_to_pulse dut(
         .i_clk    (clk),
         .i_reset  (reset),
-        ...
+        .i_in     (in),
+        .o_rise_out    (out_rise),
+        .o_fall_out    (out_fall)
     );
 
     initial begin
         #(reset_duration); // Se comienza cuando el reset termina
+        
+        #(period);
+        in = 1'b1;
+        #(period);
+        in = 1'b0;
 
+        #(period);
+        in = 1'b1;
+        #(5*period);
+        in = 1'b0;
+
+        // Finalizando
+        #(5*period);
         $finish;
+
     end
 
 
