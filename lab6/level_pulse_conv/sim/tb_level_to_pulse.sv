@@ -24,11 +24,11 @@ module tb_level_to_pulse();
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
     level_to_pulse dut(
-        .i_clk    (clk),
-        .i_reset  (reset),
-        .i_in     (in),
-        .o_rise_out    (out_rise),
-        .o_fall_out    (out_fall)
+        .i_clk      (clk),
+        .i_reset    (reset),
+        .i_in       (in),
+        .o_rise_out (out_rise),
+        .o_fall_out (out_fall)
     );
 
     initial begin
@@ -39,7 +39,7 @@ module tb_level_to_pulse();
         #(period);
         in = 1'b0;
 
-        #(period);
+        #(5*period);
         in = 1'b1;
         #(5*period);
         in = 1'b0;

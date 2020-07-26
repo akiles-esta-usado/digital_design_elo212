@@ -25,7 +25,7 @@ module top_reg_ALU_display(
 
     reg_ALU_display #(.WIDTH(4))(
         .clk        (CLK100MHZ),
-        .reset      (CPU_RESETN),
+        .reset      (reset),
         .data_in    (data_in),
         .load_A     (load_A),
         .load_B     (load_B),

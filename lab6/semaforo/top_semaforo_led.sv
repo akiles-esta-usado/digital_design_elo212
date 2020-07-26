@@ -10,7 +10,7 @@ module top_semaforo_led(
 
     semaforo_led sem_inst (
         .i_clk     (CLK100MHZ),
-        .i_reset   (CPU_RESETN),
+        .i_reset   (~CPU_RESETN),
         .i_btn_TA  (BTNL),
         .i_btn_TB  (BTNR),
         .o_led_A_r (LED16_R),

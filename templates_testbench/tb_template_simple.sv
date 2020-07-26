@@ -1,17 +1,9 @@
 ///////////////////////////////////////////////////
 //  Las únicas cosas que hay que modificar son:
-//  - estructuras de entrada y salida (in_s, out_s)
+//  - estructuras de entrada y salida (in, out)
 //  - Parámetros
 //  - tipo del DUT y puertos.
 ///////////////////////////////////////////////////
-typedef struct packed {
-    logic       none;
-} in_s;
-
-typedef struct packed{
-    logic       none;
-} out_s;
-
 localparam period         = 10;           // duración de un periodo
 localparam test_duration  = 40  * period; // duración máxima del test
 localparam reset_duration = 3.2 * period; // duración del reset
@@ -24,8 +16,20 @@ module tb-testbench-name();
     timeprecision 1ps;
 
     logic   clk, reset;
-    in_s  in;
-    out_s out;
+
+    //////////////////////////////////////////////////////////
+    // Agrega las entradas y salidas a las estructuras.
+    // Es para agruparlas, pero perfectamente se pueden borrar
+    //////////////////////////////////////////////////////////
+
+    struct packed {
+        logic       none;
+    } in;
+
+    struct packed{
+        logic       none;
+    } out;
+
 
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT

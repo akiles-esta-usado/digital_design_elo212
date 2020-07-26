@@ -5,69 +5,65 @@ module level_to_pulse (
 	    output 	logic o_rise_out, o_fall_out
     );
 
-typedef enum logic [4:0] {
-    DOWN,
-    RISE,
-    UP,
-    FALL
-} state_t;
+    typedef enum logic [3:0] {
+        DOWN,
+        RISE,
+        UP,
+        FALL
+    } state_t;
 
-(* fsm_encoding = "one_hot" *) state_t pr_state, nx_state;
+    (* fsm_encoding = "one_hot" *) state_t pr_state, nx_state;
 
-//FSM state register:
-always_ff @(posedge i_clk) begin
-	if   (i_reset) pr_state <= DOWN;
-	else           pr_state <= nx_state;
-end
+    //FSM state register:
+    always_ff @(posedge i_clk) begin
+        if   (i_reset) pr_state <= DOWN;
+        else           pr_state <= nx_state;
+    end
 
-//FSM next state combinational logic:
-always_comb begin
-    case (pr_state)
-        DOWN: begin
-            if      (i_in == 1'b0) nx_state = DOWN;
-            else if (i_in == 1'b1) nx_state = RISE;
-        end
+    //FSM next state combinational logic:
+    always_comb begin
+        nx_state = pr_state;
 
-        RISE: begin
-            if      (i_in == 1'b0) nx_state = FALL;
-            else if (i_in == 1'b1) nx_state = UP;
-        end
+        case (pr_state)
+            DOWN: begin
+                if (i_in == 1'b1) nx_state = RISE;
+            end
 
-        UP: begin
-            if      (i_in == 1'b0) nx_state = FALL;
-            else if (i_in == 1'b1) nx_state = UP;
-        end
+            RISE: begin
+                if      (i_in == 1'b0) nx_state = FALL;
+                else if (i_in == 1'b1) nx_state = UP;
+            end
 
-        FALL: begin
-            if      (i_in == 1'b0) nx_state = DOWN;
-            else if (i_in == 1'b1) nx_state = RISE;
-        end
+            UP: begin
+                if      (i_in == 1'b0) nx_state = FALL;
+            end
 
-        default: begin
-            nx_state = pr_state;
-        end
+            FALL: begin
+                if      (i_in == 1'b0) nx_state = DOWN;
+                else if (i_in == 1'b1) nx_state = RISE;
+            end
 
-    endcase
-end
+        endcase
+    end
 
-//FSM output combinational logic:
-always_comb begin
-    case(pr_state)
-        FALL: begin
-            o_fall_out = 1'b1;
-            o_rise_out = 1'b0;
-        end
+    //FSM output combinational logic:
+    always_comb begin
+        case(pr_state)
+            FALL: begin
+                o_fall_out = 1'b1;
+                o_rise_out = 1'b0;
+            end
 
-        RISE: begin
-            o_fall_out = 1'b0;
-            o_rise_out = 1'b1;
-        end
+            RISE: begin
+                o_fall_out = 1'b0;
+                o_rise_out = 1'b1;
+            end
 
-        default: begin
-            o_fall_out = 1'b0;
-            o_rise_out = 1'b0;
-        end
-    endcase
-end
+            default: begin
+                o_fall_out = 1'b0;
+                o_rise_out = 1'b0;
+            end
+        endcase
+    end
 
 endmodule

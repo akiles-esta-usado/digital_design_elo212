@@ -1,0 +1,22 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Fri Jul 24 05:17:46 2020
+# Process ID: 10588
+# Current directory: D:/Users/matias/Proyectos/project_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3384 D:\Users\matias\Proyectos\project_1\project_1.xpr
+# Log file: D:/Users/matias/Proyectos/project_1/vivado.log
+# Journal file: D:/Users/matias/Proyectos/project_1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Users/matias/Proyectos/project_1/project_1.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2019.2/data/ip'.
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 630.781 ; gain = 54.344
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Jul 24 05:18:50 2020...
