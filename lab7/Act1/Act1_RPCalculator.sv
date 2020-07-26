@@ -4,7 +4,7 @@ module Act1_RPCalculator #(parameter N_debouncer = 10) (
         input  logic [15:0] DataIn,
         output logic [3:0]  Flags, // [3:0] = {N, Z, C, V}
         output logic [15:0] ToDisplay,
-        output logic [3:0]  CurrentState
+        output logic [4:0]  CurrentState
     );
 
     logic reset;
@@ -26,10 +26,10 @@ module Act1_RPCalculator #(parameter N_debouncer = 10) (
         .Result(ALU_Result),
         .Status(flags)
     );
-    PB_Debouncer_FSM #() status_button( //revisar instancia
+PB_Debouncer_FSM #(N_debouncer) status_button( //revisar instancia
         .clk(             clk),
         .rst(             rst),
-        .PB(              PB),
+        .PB(              Enter),
         .PB_pressed_pulse(pressed)
     );
     always_ff @(posedge clk) begin //Es necesario este always si esque ya esta en el de Debouncer?? 
@@ -115,4 +115,3 @@ endcase
 
     end
 endmodule
-

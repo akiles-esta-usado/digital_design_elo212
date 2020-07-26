@@ -29,6 +29,4 @@ module reg_ALU_display #(parameter WIDTH=8)(
         .o_Result     (result_to_7seg)
     );
 
-    
-
 endmodule
