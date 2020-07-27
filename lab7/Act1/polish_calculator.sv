@@ -3,17 +3,20 @@ module polish_calculator #(parameter WIDTH = 16) (
         input  logic             Enter,
         input  logic [WIDTH-1:0] DataIn,
         output logic [WIDTH-1:0] DataOut,
-        output logic [3:0]       CurrentState,
+        output logic [6:0]       CurrentState,
         output logic             toDisplaySel,
         output logic [3:0]       Flags
     );
 
     logic load_A, load_B, load_Op, update_Res; // esta bien tratarlos como salidas en FSM? 
 
-    typedef enum logic [3:0] {
+    typedef enum logic [6:0] {
         Wait_OPA,
+        Load_OPA,
         Wait_OPB,
+        Load_OPB,
         Wait_OpCode,
+        Load_OpCode,
         Show_Result
     } state;
 
@@ -52,15 +55,15 @@ module polish_calculator #(parameter WIDTH = 16) (
         toDisplaySel = 'd1;
 
         case (pr_state)
-            Wait_OPA: begin
+            Load_OPA: begin
                 load_A       = 1'b1;
             end
 
-            Wait_OPB: begin
+            Load_OPB: begin
                 load_B       = 1'b1;
             end
 
-            Wait_OpCode: begin
+            Load_OpCode: begin
                 load_Op      = 1'b1;
             end
 
@@ -68,7 +71,7 @@ module polish_calculator #(parameter WIDTH = 16) (
                 update_Res   = 1'b1;
                 toDisplaySel = 1'b0;
             end
-        
+
         endcase
     end
 
@@ -78,20 +81,34 @@ module polish_calculator #(parameter WIDTH = 16) (
 
         case (pr_state)
             Wait_OPA: begin
-                if (Enter) nx_state = Wait_OPB;
+                if (Enter) nx_state = Load_OPA;
+            end
+
+            Load_OPA: begin
+                nx_state = Wait_OPB;
             end
 
             Wait_OPB: begin
-                if (Enter) nx_state = Wait_OpCode;
+                if (Enter) nx_state = Load_OPB;
+            end
+
+            Load_OPB: begin
+                nx_state = Wait_OpCode;
             end
 
             Wait_OpCode: begin
-                if (Enter) nx_state = Show_Result;
+                if (Enter) nx_state = Load_OpCode;
+            end
+
+            Load_OpCode: begin
+                nx_state = Show_Result;
             end
 
             Show_Result: begin
                 if (Enter) nx_state = Wait_OPA;
             end
+
         endcase
+
     end
 endmodule

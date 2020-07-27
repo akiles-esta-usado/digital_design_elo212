@@ -39,68 +39,67 @@ module tb_act1();
         .DataIn       (in_DataIn),
         .Flags        (out_Flags),
         .ToDisplay    (out_ToDisplay),
-        .CurrentState (out_CurrentState),
-        .Flags        (out_Flags)
+        .CurrentState (out_CurrentState)
     );
 
     initial begin
         #(reset_duration); // Se comienza cuando el reset termina
 
         // Ajustar un valor, 10
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd10;
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
         // Ajustar un valor, 5
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd5;
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
         // Ajustar un valor, +
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd0; // 00
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
 
         // Testeando Reset
         #(10 * period);
-        reset = 1;
-        #period;
-        reset = 0;
+        resetN = 0;
+        #(20 * period);
+        resetN = 1;
         #(10 * period);
 
 
         // Test de Negativo
         // Ajustar un valor, 50
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd50;
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
         // Ajustar un valor, 60
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd60;
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
         // Ajustar un valor, -
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd1; // resta
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
         #(10 * period);
         in_Enter = 1;
-        #(period);
+        #(20 * period);
         in_Enter = 0;
         #(10 * period);
 
@@ -108,30 +107,31 @@ module tb_act1();
 
         // Test de Carry
         // Ajustar un valor, -10
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = -'d10;
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
         // Ajustar un valor, -5
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = -'d5;
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
         // Ajustar un valor, +
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd0; // suma
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
-        
+
+
 
         #(10 * period);
         in_Enter = 1;
-        #(period);
+        #(20 * period);
         in_Enter = 0;
         #(10 * period);
 
@@ -139,24 +139,24 @@ module tb_act1();
 
         // Test de Overflow
         // Ajustar un valor, 2^(16-1)
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd32_767;
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
         // Ajustar un valor, 1
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd1;
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
         // Ajustar un valor, suma
-        #(20 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd0;
-        #(period);
+        #(20 * period);
         in_Enter = 'd0;
 
 
@@ -165,7 +165,6 @@ module tb_act1();
 
         $finish;
     end
-
 
 
     ////////////////////////////////////////////////////
