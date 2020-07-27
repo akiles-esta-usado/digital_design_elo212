@@ -4,9 +4,8 @@ module Act1_RPCalculator #(parameter N_debouncer = 10) (
         input  logic [15:0] DataIn,
         output logic [3:0]  Flags, // [3:0] = {N, Z, C, V}
         output logic [15:0] ToDisplay,
-        output logic [3:0]  CurrentState
+        output logic [6:0]  CurrentState
     );
-
 
     logic reset;
     synchronizer sync(
@@ -16,11 +15,14 @@ module Act1_RPCalculator #(parameter N_debouncer = 10) (
     );
 
     logic pressed;
+    logic dummy1, dummy1; // solo son para evitar el warning
     debouncer_FSM #(N_debouncer) status_button( //revisar instancia
-        .clk              (clk),
-        .rst              (reset),
-        .PB               (Enter),
-        .PB_pressed_pulse (pressed)
+        .clk               (clk),
+        .rst               (reset),
+        .PB                (Enter),
+        .PB_pressed_status (dummy1),
+        .PB_released_pulse (dummy2),
+        .PB_pressed_pulse  (pressed)
     );
 
     logic        displaySel;
