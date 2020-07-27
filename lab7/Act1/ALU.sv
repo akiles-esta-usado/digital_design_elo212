@@ -4,7 +4,7 @@ module ALU
         input  logic [WIDTH-1:0] B,
         input  logic [1:0]       OpCode,
         output logic [WIDTH-1:0] Result,
-        output logic [3:0]       Status //n,c,z,v
+        output logic [3:0]       Status //n,z,c,v
     );
     
     logic N, Z, C, V;
@@ -54,7 +54,7 @@ module ALU
 
     assign N = Result[WIDTH-1];
 
-    // logic [3:0]   Status //n,c,z,v
-    assign Status = {N, C, Z, V};
+    // logic [3:0]   Status //n,z,c,v
+    assign Status = {N, Z, C, V};
                 //   3  2  1  0
 endmodule
