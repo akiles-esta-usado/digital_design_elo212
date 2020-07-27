@@ -4,7 +4,8 @@ module polish_calculator #(parameter WIDTH = 16) (
         input  logic [WIDTH-1:0] DataIn,
         output logic [WIDTH-1:0] DataOut,
         output logic [3:0]       CurrentState,
-        output logic             toDisplaySel
+        output logic             toDisplaySel,
+        output logic [3:0]       Flags
     );
 
     logic load_A, load_B, load_Op, update_Res; // esta bien tratarlos como salidas en FSM? 
@@ -18,21 +19,28 @@ module polish_calculator #(parameter WIDTH = 16) (
 
     (* fsm_encoding = "one_hot" *) state pr_state, nx_state;  
 
-    always_ff @(posedge clk)
-        if (reset) pr_state <= Wait_OPA;
-        else       pr_state <= nx_state;
 
-    reg_ALU_datain #(.WIDTH(WIDTH)) ALU_inst(
-        .i_clk         (clk),
-        .i_reset       (reset),
-        .i_data_in     (DataIn),
-        .i_load_A      (load_A),
-        .i_load_B      (load_B), 
-        .i_load_Op     (load_Op), 
-        .i_update_Res  (update_Res),
-        .o_data_out    (DataOut)
+    reg_ALU #(.WIDTH(WIDTH)) ALU_inst (
+        .i_clk        (clk),
+        .i_reset      (reset),
+        .i_A          (DataIn),
+        .i_B          (DataIn),
+        .i_OpCode     (DataIn[1:0]),
+        .i_load_A     (load_A),
+        .i_load_B     (load_B),
+        .i_load_Op    (load_Op),
+        .i_update_Res (update_Res),
+        .o_Result     (DataOut),
+        .o_Flags      (Flags)
     );
 
+    // FSM actualización
+    always_ff @(posedge clk) begin
+        if (reset) pr_state <= Wait_OPA;
+        else       pr_state <= nx_state;
+    end
+
+    // Lógica de salidas
     always_comb begin
         load_A       = 1'b0;
         load_B       = 1'b0;
@@ -40,6 +48,8 @@ module polish_calculator #(parameter WIDTH = 16) (
         update_Res   = 1'b0;
 
         CurrentState = pr_state;
+
+        toDisplaySel = 'd1;
 
         case (pr_state)
             Wait_OPA: begin
@@ -62,7 +72,7 @@ module polish_calculator #(parameter WIDTH = 16) (
         endcase
     end
 
-    // FSM Solo lógica de transición
+    // FSM lógica de transición
     always_comb begin
         nx_state = pr_state;
 
@@ -85,32 +95,3 @@ module polish_calculator #(parameter WIDTH = 16) (
         endcase
     end
 endmodule
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

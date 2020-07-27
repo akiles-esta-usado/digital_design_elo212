@@ -1,4 +1,4 @@
-module PB_Debouncer_FSM #(
+module debouncer_FSM #(
     parameter DELAY=15                 // Number of clock pulses to check stable button pressing
     )
 (

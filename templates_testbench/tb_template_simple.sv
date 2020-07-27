@@ -4,9 +4,7 @@
 //  - Parámetros
 //  - tipo del DUT y puertos.
 ///////////////////////////////////////////////////
-localparam period         = 10;           // duración de un periodo
-localparam test_duration  = 40  * period; // duración máxima del test
-localparam reset_duration = 3.2 * period; // duración del reset
+
 
 ///////////////////////////////////
 // Modifica el nombre del testbench
@@ -14,6 +12,10 @@ localparam reset_duration = 3.2 * period; // duración del reset
 module tb-testbench-name();
     timeunit      1ns;
     timeprecision 1ps;
+
+    localparam period         = 10;           // duración de un periodo
+    localparam test_duration  = 40  * period; // duración máxima del test
+    localparam reset_duration = 3.2 * period; // duración del reset
 
     logic   clk, reset;
 

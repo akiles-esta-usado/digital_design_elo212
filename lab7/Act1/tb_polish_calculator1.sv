@@ -27,75 +27,140 @@ module tb_polish_calc1();
 
     logic [15:0] out_DataOut;
     logic [3:0]  out_CurrentState;
+    logic [3:0]  out_Flags;
 
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    Polish_Calculator #(.WIDTH(16)) dut(
+    polish_calculator #(.WIDTH(16)) dut(
         .clk          (clk),
         .reset        (reset),
         .Enter        (in_Enter),
         .DataIn       (in_DataIn),
         .DataOut      (out_DataOut),
-        .CurrentState (out_CurrentState)
+        .CurrentState (out_CurrentState),
+        .Flags        (out_Flags)
     );
 
     initial begin
         #(reset_duration); // Se comienza cuando el reset termina
 
         // Ajustar un valor, 10
-        #(2 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd10;
         #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, 5
-        #(2 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd5;
         #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, +
-        #(2 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd0; // 00
         #(period);
         in_Enter = 'd0;
 
+
+        // Testeando Reset
+        #(10 * period);
+        reset = 1;
+        #period;
+        reset = 0;
         #(10 * period);
 
 
-
-        in_Enter = 'd1;
-        #(period);
-        in_Enter = 'd0;
-
-
+        // Test de Negativo
         // Ajustar un valor, 50
-        #(2 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd50;
         #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, 60
-        #(2 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd60;
         #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, -
-        #(2 * period);
+        #(period);
         in_Enter = 'd1;
         in_DataIn = 'd1; // resta
+        #(period);
+        in_Enter = 'd0;
+
+        #(10 * period);
+        in_Enter = 1;
+        #(period);
+        in_Enter = 0;
+        #(10 * period);
+
+
+
+        // Test de Carry
+        // Ajustar un valor, -10
+        #(period);
+        in_Enter = 'd1;
+        in_DataIn = -'d10;
+        #(period);
+        in_Enter = 'd0;
+
+        // Ajustar un valor, -5
+        #(period);
+        in_Enter = 'd1;
+        in_DataIn = -'d5;
+        #(period);
+        in_Enter = 'd0;
+
+        // Ajustar un valor, +
+        #(period);
+        in_Enter = 'd1;
+        in_DataIn = 'd0; // suma
         #(period);
         in_Enter = 'd0;
         
 
         #(10 * period);
+        in_Enter = 1;
+        #(period);
+        in_Enter = 0;
+        #(10 * period);
+
+
+
+        // Test de Overflow
+        // Ajustar un valor, 2^(16-1)
+        #(period);
+        in_Enter = 'd1;
+        in_DataIn = 'd32_767;
+        #(period);
+        in_Enter = 'd0;
+
+        // Ajustar un valor, 1
+        #(period);
+        in_Enter = 'd1;
+        in_DataIn = 'd1;
+        #(period);
+        in_Enter = 'd0;
+
+        // Ajustar un valor, suma
+        #(period);
+        in_Enter = 'd1;
+        in_DataIn = 'd0;
+        #(period);
+        in_Enter = 'd0;
+
+
+        #(10 * period);
+
 
         $finish;
     end

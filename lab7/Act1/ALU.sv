@@ -53,5 +53,8 @@ module ALU
     end
 
     assign N = Result[WIDTH-1];
-    assign Status = {N, Z, C, V};
+
+    // logic [3:0]   Status //n,c,z,v
+    assign Status = {N, C, Z, V};
+                //   3  2  1  0
 endmodule
