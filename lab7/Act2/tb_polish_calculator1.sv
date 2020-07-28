@@ -11,11 +11,11 @@ localparam reset_duration = 3.2 * period; // duración del reset
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb_act1();
+module tb_polish_calc1();
     timeunit      1ns;
     timeprecision 1ps;
 
-    logic   clk, resetN;
+    logic   clk, reset;
 
     //////////////////////////////////////////////////////////
     // Agrega las entradas y salidas a las estructuras.
@@ -24,20 +24,22 @@ module tb_act1();
 
     logic        in_Enter;
     logic [15:0] in_DataIn;
-    logic [3:0]  out_Flags;
-    logic [15:0] out_ToDisplay;
+
+    logic [15:0] out_DataOut;
     logic [3:0]  out_CurrentState;
+    logic [3:0]  out_Flags;
+
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    Act1_RPCalculator dut(
+    polish_calculator #(.WIDTH(16)) dut(
         .clk          (clk),
-        .resetN       (resetN),
+        .reset        (reset),
         .Enter        (in_Enter),
         .DataIn       (in_DataIn),
-        .Flags        (out_Flags),
-        .ToDisplay    (out_ToDisplay),
-        .CurrentState (out_CurrentState)
+        .DataOut      (out_DataOut),
+        .CurrentState (out_CurrentState),
+        .Flags        (out_Flags)
     );
 
     initial begin
@@ -47,29 +49,29 @@ module tb_act1();
         #(period);
         in_Enter = 'd1;
         in_DataIn = 'd10;
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, 5
         #(period);
         in_Enter = 'd1;
         in_DataIn = 'd5;
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, +
         #(period);
         in_Enter = 'd1;
         in_DataIn = 'd0; // 00
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
 
         // Testeando Reset
         #(10 * period);
-        resetN = 0;
-        #(20 * period);
-        resetN = 1;
+        reset = 1;
+        #period;
+        reset = 0;
         #(10 * period);
 
 
@@ -78,26 +80,26 @@ module tb_act1();
         #(period);
         in_Enter = 'd1;
         in_DataIn = 'd50;
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, 60
         #(period);
         in_Enter = 'd1;
         in_DataIn = 'd60;
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, -
         #(period);
         in_Enter = 'd1;
         in_DataIn = 'd1; // resta
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
         #(10 * period);
         in_Enter = 1;
-        #(20 * period);
+        #(period);
         in_Enter = 0;
         #(10 * period);
 
@@ -108,28 +110,27 @@ module tb_act1();
         #(period);
         in_Enter = 'd1;
         in_DataIn = -'d10;
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, -5
         #(period);
         in_Enter = 'd1;
         in_DataIn = -'d5;
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, +
         #(period);
         in_Enter = 'd1;
         in_DataIn = 'd0; // suma
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
-
-
+        
 
         #(10 * period);
         in_Enter = 1;
-        #(20 * period);
+        #(period);
         in_Enter = 0;
         #(10 * period);
 
@@ -140,21 +141,21 @@ module tb_act1();
         #(period);
         in_Enter = 'd1;
         in_DataIn = 'd32_767;
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, 1
         #(period);
         in_Enter = 'd1;
         in_DataIn = 'd1;
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
         // Ajustar un valor, suma
         #(period);
         in_Enter = 'd1;
         in_DataIn = 'd0;
-        #(20 * period);
+        #(period);
         in_Enter = 'd0;
 
 
@@ -173,10 +174,10 @@ module tb_act1();
 
     initial begin
         clk   = 1;
-        resetN = 0;
+        reset = 1;
 
         #(reset_duration);
-        resetN = 1;
+        reset = 0;
     end
 
     initial begin
