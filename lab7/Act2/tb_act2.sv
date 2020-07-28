@@ -11,7 +11,7 @@ localparam reset_duration = 3.2 * period; // duración del reset
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb_act1();
+module tb_act2();
     timeunit      1ns;
     timeprecision 1ps;
 
@@ -26,11 +26,11 @@ module tb_act1();
     logic [15:0] in_DataIn;
     logic [3:0]  out_Flags;
     logic [15:0] out_ToDisplay;
-    logic [3:0]  out_CurrentState;
+    logic [6:0]  out_CurrentState;
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    Act1_RPCalculator dut(
+    Act2_RPCalculator dut(
         .clk          (clk),
         .resetN       (resetN),
         .Enter        (in_Enter),

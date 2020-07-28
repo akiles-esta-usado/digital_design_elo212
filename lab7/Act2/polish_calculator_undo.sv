@@ -1,6 +1,6 @@
-module polish_calculator #(parameter WIDTH = 16) (
+module polish_calculator_undo #(parameter WIDTH = 16) (
         input  logic             clk, reset,
-        input  logic             Enter,Undo,
+        input  logic             Enter, Undo,
         input  logic [WIDTH-1:0] DataIn,
         output logic [WIDTH-1:0] DataOut,
         output logic [6:0]       CurrentState,
@@ -11,16 +11,17 @@ module polish_calculator #(parameter WIDTH = 16) (
     logic load_A, load_B, load_Op, update_Res; // esta bien tratarlos como salidas en FSM? 
 
     typedef enum logic [6:0] {
-        Wait_OPA,
-        Load_OPA,
-        Wait_OPB,
-        Load_OPB,
-        Wait_OpCode,
-        Load_OpCode,
-        Show_Result
+        Wait_OPA    = 'b0000001,
+        Load_OPA    = 'b0000010,
+        Wait_OPB    = 'b0000100,
+        Load_OPB    = 'b0001000,
+        Wait_OpCode = 'b0010000,
+        Load_OpCode = 'b0100000,
+        Show_Result = 'b1000000
     } state;
 
-    (* fsm_encoding = "one_hot" *) state pr_state, nx_state;  
+    (* fsm_encoding = "one_hot" *) state pr_state;  
+    state nx_state;  
 
 
     reg_ALU #(.WIDTH(WIDTH)) ALU_inst (
@@ -90,7 +91,6 @@ module polish_calculator #(parameter WIDTH = 16) (
 
             Wait_OPB: begin
                 if (Enter) nx_state = Load_OPB;
-                else if (Undo) nx_state = Wait_OPA;
             end
 
             Load_OPB: begin
@@ -99,7 +99,6 @@ module polish_calculator #(parameter WIDTH = 16) (
 
             Wait_OpCode: begin
                 if (Enter) nx_state = Load_OpCode;
-                else if (Undo) nx_stare = Wait_OPB;
             end
 
             Load_OpCode: begin
@@ -108,7 +107,6 @@ module polish_calculator #(parameter WIDTH = 16) (
 
             Show_Result: begin
                 if (Enter) nx_state = Wait_OPA;
-                else if (Undo) nx_stare = Wait_OpCode;
             end
 
         endcase

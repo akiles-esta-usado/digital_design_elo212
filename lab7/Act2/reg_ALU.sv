@@ -27,7 +27,7 @@ module reg_ALU #(parameter WIDTH=8)(
         next_B      = (i_load_B)             ? i_B        : ALU_B;
         next_OpCode = (i_load_Op)            ? i_OpCode   : ALU_OpCode;
         next_Result = (i_update_Res == 1'b1) ? ALU_Result : o_Result;
-        next_Flags  = ALU_Flags;
+        next_Flags  = (i_update_Res == 1'b1) ? ALU_Flags  : o_Flags;
     end
 
     // Lógica de actualización de registros
