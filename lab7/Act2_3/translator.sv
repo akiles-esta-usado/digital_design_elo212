@@ -20,7 +20,6 @@ module translator(
 
     assign bcd_in = (i_displayFormat == 1'b1) ? toDisplay_bcd : {4'b0000, i_toDisplay_bin};
 
-
     // En el diagrama, estamos en la zona post mux (displayFormat)
 
     logic [7:0]  anodes_wrapper;

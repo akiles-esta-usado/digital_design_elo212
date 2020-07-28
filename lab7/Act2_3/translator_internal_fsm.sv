@@ -6,10 +6,10 @@ module translator_internal_fsm(
 
 
     typedef enum logic [3:0] {
-        IDLE, 
-        WAIT, 
-        WAITING, 
-        LOAD
+        IDLE    = 'b0001, 
+        WAIT    = 'b0010, 
+        WAITING = 'b0100, 
+        LOAD    = 'b1000
     } state;
     state pr_state, nx_state;
 

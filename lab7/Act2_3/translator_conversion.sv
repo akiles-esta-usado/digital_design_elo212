@@ -4,15 +4,15 @@
 
 module translator_conversion (
         input  logic        i_clk, i_reset,
-        input        [3:0]  i_currentState,
+        input        [6:0]  i_currentState,
         input        [15:0] i_toDisplay_bin,
         output       [19:0] o_bcd
     );
 
     logic update;
 
-    logic [3:0] pr_state;
-    logic [3:0] nx_state;
+    logic [6:0] pr_state;
+    logic [6:0] nx_state;
 
     always_ff @(posedge i_clk) begin
         if (i_reset) begin

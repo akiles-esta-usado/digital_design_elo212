@@ -11,7 +11,7 @@ localparam reset_duration = 3.2 * period; // duración del reset
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb_act2();
+module tb_act2_3();
     timeunit      1ns;
     timeprecision 1ps;
 
@@ -22,22 +22,28 @@ module tb_act2();
     // Es para agruparlas, pero perfectamente se pueden borrar
     //////////////////////////////////////////////////////////
 
-    logic        in_Enter;
+    logic        in_Enter, in_Undo, in_DisplayFormat;
     logic [15:0] in_DataIn;
     logic [3:0]  out_Flags;
-    logic [15:0] out_ToDisplay;
     logic [6:0]  out_CurrentState;
+    logic [6:0]  out_Segments;
+    logic [4:0]  out_Anodes;
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
-    Act2_RPCalculator dut(
-        .clk          (clk),
-        .resetN       (resetN),
-        .Enter        (in_Enter),
-        .DataIn       (in_DataIn),
-        .Flags        (out_Flags),
-        .ToDisplay    (out_ToDisplay),
-        .CurrentState (out_CurrentState)
+    
+    
+    Act3_RPCalculator dut(
+        .clk               (clk),
+        .resetN            (resetN),
+        .Enter             (in_Enter),
+        .Undo           (in_Undo),
+        .DisplayFormat  (in_DisplayFormat),
+        .DataIn            (in_DataIn),
+        .Flags             (out_Flags),
+        .CurrentState      (out_CurrentState),
+        .Segments          (out_Segments),
+        .Anodes            (out_Anodes)
     );
 
     initial begin
