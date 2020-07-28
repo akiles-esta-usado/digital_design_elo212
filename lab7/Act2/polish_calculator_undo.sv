@@ -77,6 +77,7 @@ module polish_calculator_undo #(parameter WIDTH = 16) (
     end
 
     // FSM lógica de transición
+    // Enter tiene preferencia sobre el boton Undo                              
     always_comb begin
         nx_state = pr_state;
 
@@ -91,6 +92,7 @@ module polish_calculator_undo #(parameter WIDTH = 16) (
 
             Wait_OPB: begin
                 if (Enter) nx_state = Load_OPB;
+                else if (Undo) nx_state = Wait_OPA;
             end
 
             Load_OPB: begin
@@ -99,6 +101,7 @@ module polish_calculator_undo #(parameter WIDTH = 16) (
 
             Wait_OpCode: begin
                 if (Enter) nx_state = Load_OpCode;
+                else if (Undo) nx_state = Wait_OPB; 
             end
 
             Load_OpCode: begin
@@ -107,6 +110,7 @@ module polish_calculator_undo #(parameter WIDTH = 16) (
 
             Show_Result: begin
                 if (Enter) nx_state = Wait_OPA;
+                else if (Undo) nx_state = Wait_OpCode; 
             end
 
         endcase
