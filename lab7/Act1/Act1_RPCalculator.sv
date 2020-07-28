@@ -15,7 +15,7 @@ module Act1_RPCalculator #(parameter N_debouncer = 10) (
     );
 
     logic pressed;
-    logic dummy1, dummy1; // solo son para evitar el warning
+    logic dummy1, dummy2; // solo son para evitar el warning
     debouncer_FSM #(N_debouncer) status_button( //revisar instancia
         .clk               (clk),
         .rst               (reset),

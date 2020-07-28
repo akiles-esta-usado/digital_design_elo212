@@ -26,7 +26,7 @@ module tb_act1();
     logic [15:0] in_DataIn;
     logic [3:0]  out_Flags;
     logic [15:0] out_ToDisplay;
-    logic [3:0]  out_CurrentState;
+    logic [6:0]  out_CurrentState;
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////

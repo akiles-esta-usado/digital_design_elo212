@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="131666fs"></ZoomStartTime>
-      <ZoomEndTime time="159567fs"></ZoomEndTime>
-      <Cursor1Time time="200000fs"></Cursor1Time>
+      <ZoomStartTime time="3722069fs"></ZoomStartTime>
+      <ZoomEndTime time="3877987fs"></ZoomEndTime>
+      <Cursor1Time time="3852000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="165"></NameColumnWidth>
-      <ValueColumnWidth column_width="79"></ValueColumnWidth>
+      <ValueColumnWidth column_width="75"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="16" />
    <wvobject fp_name="/tb_act1/clk" type="logic">
@@ -186,7 +186,6 @@
    <wvobject fp_name="/tb_act1/out_CurrentState" type="array">
       <obj_property name="ElementShortName">out_CurrentState[3:0]</obj_property>
       <obj_property name="ObjectShortName">out_CurrentState[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
       <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>
