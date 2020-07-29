@@ -13,7 +13,7 @@ localparam reset_duration = 3.2 * period; // duración del reset
 ///////////////////////////////////
 module tb_act2_3();
     timeunit      1ns;
-    timeprecision 1ps;
+    timeprecision 100ps;
 
     logic   clk, resetN;
 
@@ -46,6 +46,31 @@ module tb_act2_3();
         .Anodes            (out_Anodes)
     );
 
+    localparam SUMA  = 'd0;
+    localparam RESTA = 'd1;
+    localparam OR    = 'd2;
+    localparam AND   = 'd3;
+
+    task automatic flip_button( 
+            ref logic button, 
+            input int interval = 'd20
+        );
+        button = ~button;
+        #(interval*period);
+        button = ~button;
+    endtask;
+
+
+    task automatic put_data(
+            ref logic [15:0] dataIn,
+            input int        value,
+            input int        interval = 600
+        );
+        dataIn = value;
+        flip_button(in_Enter);
+        #(period * interval);
+    endtask;
+
     initial begin
         in_Undo          = 'd0;
         in_DataIn        = 'd0;
@@ -53,122 +78,10 @@ module tb_act2_3();
         in_Enter         = 'd0;
         #(reset_duration); // Se comienza cuando el reset termina
 
-        // Ajustar un valor, 10
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = 'd10;
-        #(20 * period);
-        in_Enter = 'd0;
 
-        // Ajustar un valor, 5
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = 'd5;
-        #(20 * period);
-        in_Enter = 'd0;
-
-        // Ajustar un valor, +
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = 'd0; // 00
-        #(20 * period);
-        in_Enter = 'd0;
-
-
-        // Testeando Reset
-        #(10 * period);
-        resetN = 0;
-        #(20 * period);
-        resetN = 1;
-        #(10 * period);
-
-
-        // Test de Negativo
-        // Ajustar un valor, 50
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = 'd50;
-        #(20 * period);
-        in_Enter = 'd0;
-
-        // Ajustar un valor, 60
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = 'd60;
-        #(20 * period);
-        in_Enter = 'd0;
-
-        // Ajustar un valor, -
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = 'd1; // resta
-        #(20 * period);
-        in_Enter = 'd0;
-
-        #(10 * period);
-        in_Enter = 1;
-        #(20 * period);
-        in_Enter = 0;
-        #(10 * period);
-
-
-
-        // Test de Carry
-        // Ajustar un valor, -10
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = -'d10;
-        #(20 * period);
-        in_Enter = 'd0;
-
-        // Ajustar un valor, -5
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = -'d5;
-        #(20 * period);
-        in_Enter = 'd0;
-
-        // Ajustar un valor, +
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = 'd0; // suma
-        #(20 * period);
-        in_Enter = 'd0;
-
-
-
-        #(10 * period);
-        in_Enter = 1;
-        #(20 * period);
-        in_Enter = 0;
-        #(10 * period);
-
-
-
-        // Test de Overflow
-        // Ajustar un valor, 2^(16-1)
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = 'd32_767;
-        #(20 * period);
-        in_Enter = 'd0;
-
-        // Ajustar un valor, 1
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = 'd1;
-        #(20 * period);
-        in_Enter = 'd0;
-
-        // Ajustar un valor, suma
-        #(period);
-        in_Enter = 'd1;
-        in_DataIn = 'd0;
-        #(20 * period);
-        in_Enter = 'd0;
-
-
-        #(10 * period);
+        put_data(in_DataIn, 'd10);
+        put_data(in_DataIn, 'd5);
+        put_data(in_DataIn, SUMA);
 
 
         $finish;

@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="9835500fs"></ZoomStartTime>
-      <ZoomEndTime time="9857501fs"></ZoomEndTime>
-      <Cursor1Time time="9910000fs"></Cursor1Time>
+      <ZoomStartTime time="6682749fs"></ZoomStartTime>
+      <ZoomEndTime time="6690290fs"></ZoomEndTime>
+      <Cursor1Time time="4114500fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="223"></NameColumnWidth>
-      <ValueColumnWidth column_width="112"></ValueColumnWidth>
+      <ValueColumnWidth column_width="108"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="18" />
+   <WVObjectSize size="12" />
    <wvobject type="array" fp_name="/tb_translator/counter">
       <obj_property name="ElementShortName">counter[31:0]</obj_property>
       <obj_property name="ObjectShortName">counter[31:0]</obj_property>
@@ -38,62 +38,48 @@
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_translator/in_currentState">
-      <obj_property name="ElementShortName">in_currentState[3:0]</obj_property>
-      <obj_property name="ObjectShortName">in_currentState[3:0]</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">in_currentState[7:0]</obj_property>
+      <obj_property name="ObjectShortName">in_currentState[7:0]</obj_property>
+      <obj_property name="label">currentState</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_translator/in_toDisplay">
+      <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">in_toDisplay[15:0]</obj_property>
       <obj_property name="ObjectShortName">in_toDisplay[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_translator/in_displayFormat">
-      <obj_property name="ElementShortName">in_displayFormat</obj_property>
-      <obj_property name="ObjectShortName">in_displayFormat</obj_property>
+      <obj_property name="label">toDisplay</obj_property>
    </wvobject>
    <wvobject fp_name="divider10" type="divider">
       <obj_property name="label">ESTADO</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="group" fp_name="group20">
-      <obj_property name="label">translator</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject type="array" fp_name="/tb_translator/dut/toDisplay_bcd">
-         <obj_property name="ElementShortName">toDisplay_bcd[19:0]</obj_property>
-         <obj_property name="ObjectShortName">toDisplay_bcd[19:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/tb_translator/dut/bcd_in">
-         <obj_property name="ElementShortName">bcd_in[19:0]</obj_property>
-         <obj_property name="ObjectShortName">bcd_in[19:0]</obj_property>
-      </wvobject>
-   </wvobject>
    <wvobject type="group" fp_name="group33">
-      <obj_property name="label">translator_conv</obj_property>
+      <obj_property name="label">Estados de Act2 y update</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="array" fp_name="/tb_translator/dut/conv/pr_state">
-         <obj_property name="ElementShortName">pr_state[3:0]</obj_property>
-         <obj_property name="ObjectShortName">pr_state[3:0]</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">pr_state[7:0]</obj_property>
+         <obj_property name="ObjectShortName">pr_state[7:0]</obj_property>
+         <obj_property name="label">pr_state</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/tb_translator/dut/conv/nx_state">
-         <obj_property name="ElementShortName">nx_state[3:0]</obj_property>
-         <obj_property name="ObjectShortName">nx_state[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/tb_translator/dut/conv/i_currentState">
-         <obj_property name="ElementShortName">i_currentState[3:0]</obj_property>
-         <obj_property name="ObjectShortName">i_currentState[3:0]</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">nx_state[7:0]</obj_property>
+         <obj_property name="ObjectShortName">nx_state[7:0]</obj_property>
+         <obj_property name="label">nx_state, CurrentState</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/tb_translator/dut/conv/update">
          <obj_property name="ElementShortName">update</obj_property>
          <obj_property name="ObjectShortName">update</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/tb_translator/dut/conv/trigger">
-         <obj_property name="ElementShortName">trigger</obj_property>
-         <obj_property name="ObjectShortName">trigger</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group21">
       <obj_property name="label">translator_fsm</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_translator/dut/conv/update">
+         <obj_property name="ElementShortName">update</obj_property>
+         <obj_property name="ObjectShortName">update</obj_property>
+      </wvobject>
       <wvobject type="array" fp_name="/tb_translator/dut/conv/fsm/pr_state">
          <obj_property name="ElementShortName">pr_state[3:0]</obj_property>
          <obj_property name="ObjectShortName">pr_state[3:0]</obj_property>
@@ -103,44 +89,122 @@
          <obj_property name="ObjectShortName">t[7:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
+      <wvobject type="logic" fp_name="/tb_translator/dut/conv/trigger">
+         <obj_property name="ElementShortName">trigger</obj_property>
+         <obj_property name="ObjectShortName">trigger</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="divider11" type="divider">
-      <obj_property name="label">SALIDAS</obj_property>
+   <wvobject type="group" fp_name="group20">
+      <obj_property name="label">translator</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/tb_translator/in_toDisplay">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">in_toDisplay[15:0]</obj_property>
+         <obj_property name="ObjectShortName">in_toDisplay[15:0]</obj_property>
+         <obj_property name="label">(DEC) toDisplay_bin</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_translator/dut/toDisplay_bcd">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">toDisplay_bcd[19:0]</obj_property>
+         <obj_property name="ObjectShortName">toDisplay_bcd[19:0]</obj_property>
+         <obj_property name="label">(HEX) toDisplay_bcd</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_translator/in_displayFormat">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">in_displayFormat</obj_property>
+         <obj_property name="ObjectShortName">in_displayFormat</obj_property>
+         <obj_property name="label">displayFormat</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_translator/dut/bcd_in">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">bcd_in[19:0]</obj_property>
+         <obj_property name="ObjectShortName">bcd_in[19:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="label">(HEX) bcdIn</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_translator/out_segments">
-      <obj_property name="ElementShortName">out_segments[6:0]</obj_property>
-      <obj_property name="ObjectShortName">out_segments[6:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_translator/out_anodes[4]">
+   <wvobject type="group" fp_name="group311">
+      <obj_property name="label">Double Dabble</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">[4]</obj_property>
-      <obj_property name="ObjectShortName">[4]</obj_property>
-      <obj_property name="label">AN[4]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/tb_translator/dut/conv/to_bcd_inst/trigger">
+         <obj_property name="ElementShortName">trigger</obj_property>
+         <obj_property name="ObjectShortName">trigger</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_translator/dut/conv/to_bcd_inst/in">
+         <obj_property name="ElementShortName">in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">in[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_translator/dut/conv/to_bcd_inst/state">
+         <obj_property name="ElementShortName">state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">state[2:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_translator/dut/conv/to_bcd_inst/counter">
+         <obj_property name="ElementShortName">counter[5:0]</obj_property>
+         <obj_property name="ObjectShortName">counter[5:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_translator/dut/conv/to_bcd_inst/idle">
+         <obj_property name="ElementShortName">idle</obj_property>
+         <obj_property name="ObjectShortName">idle</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_translator/dut/conv/to_bcd_inst/bcd">
+         <obj_property name="ElementShortName">bcd[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bcd[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_translator/out_anodes[3]">
+   <wvobject type="group" fp_name="group302">
+      <obj_property name="label">Salidas</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">[3]</obj_property>
-      <obj_property name="ObjectShortName">[3]</obj_property>
-      <obj_property name="label">AN[3]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_translator/out_anodes[2]">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">[2]</obj_property>
-      <obj_property name="ObjectShortName">[2]</obj_property>
-      <obj_property name="label">AN[2]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_translator/out_anodes[1]">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">[1]</obj_property>
-      <obj_property name="ObjectShortName">[1]</obj_property>
-      <obj_property name="label">AN[1]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_translator/out_anodes[0]">
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="ElementShortName">[0]</obj_property>
-      <obj_property name="ObjectShortName">[0]</obj_property>
-      <obj_property name="label">AN[0]</obj_property>
+      <wvobject type="array" fp_name="/tb_translator/out_segments">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">out_segments[6:0]</obj_property>
+         <obj_property name="ObjectShortName">out_segments[6:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="label">(HEX)Segments</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_translator/out_anodes[4]">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+         <obj_property name="label">AN[4]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_translator/out_anodes[3]">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+         <obj_property name="label">AN[3]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_translator/out_anodes[2]">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+         <obj_property name="label">AN[2]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_translator/out_anodes[1]">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+         <obj_property name="label">AN[1]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_translator/out_anodes[0]">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+         <obj_property name="label">AN[0]</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

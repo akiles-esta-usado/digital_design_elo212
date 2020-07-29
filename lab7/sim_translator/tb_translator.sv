@@ -23,7 +23,7 @@ module tb_translator();
     // Es para agruparlas, pero perfectamente se pueden borrar
     //////////////////////////////////////////////////////////
 
-    logic [3:0]  in_currentState;
+    logic [7:0]  in_currentState;
     logic [15:0] in_toDisplay;
     logic        in_displayFormat;
 
@@ -43,38 +43,49 @@ module tb_translator();
         .o_anodes        (out_anodes)
     );
 
+    task automatic loadTranslator(ref logic [15:0] toDisplay,
+                                  ref logic [7:0]  currentState,
+                                  ref logic        Format,
+                                  input logic [15:0] newDisplay,
+                                  input logic [7:0]  newState,
+                                  input logic        newFormat
+                                  );
+        toDisplay    = newDisplay;
+        currentState = newState;
+        Format       = newFormat;
+        #(140*period);
+    endtask;
+
+    task automatic change_constantly(ref logic Format);
+        repeat (10) begin
+            Format = ~Format;
+            #(8*period);
+        end
+    endtask;
+
     initial begin
         #(reset_duration); // Se comienza cuando el reset termina
         in_toDisplay = 'd10;
         in_currentState = 'b0001;
         in_displayFormat = 'd1;
 
+        #(3*period);
 
         // toDisplay = 10 (0a), currentState = 2, displayFormat = 1
-        #(3*period);
-        in_toDisplay = 'd10;
-        in_currentState = 'b0010;
-        in_displayFormat = 'd1;
+        loadTranslator(in_toDisplay, in_currentState, in_displayFormat, 'd10, 'b10, 'd1);
+        change_constantly(in_displayFormat);
 
-        #(150*period);
+        // toDisplay = 11 (0b), currentState = 3, displayFormat = 0
+        loadTranslator(in_toDisplay, in_currentState, in_displayFormat, 'd11, 'b11, 'd0);
+        change_constantly(in_displayFormat);
 
-        repeat (10) begin
-            in_displayFormat = ~in_displayFormat;
-            #(8*period);
-        end
 
-        // toDisplay = 255 (FF), currentState = 3, displayFormat = 1
-        #(3*period);
-        in_toDisplay = 'd255;
-        in_currentState = 'b0011;
-        in_displayFormat = 'd1;
+        // toDisplay = 255 (FF), currentState = 0, displayFormat = 1
+        loadTranslator(in_toDisplay, in_currentState, in_displayFormat, 'd255, 'b0, 'd1);
+        change_constantly(in_displayFormat);
 
-        #(150*period);
-
-        repeat (10) begin
-            in_displayFormat = ~in_displayFormat;
-            #(8*period);
-        end
+        #(10 * period);
+        $finish;
 
     end
 

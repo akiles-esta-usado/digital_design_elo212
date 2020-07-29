@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_act2_3_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_act2_3" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="97401fs"></ZoomEndTime>
+      <Cursor1Time time="30000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="223"></NameColumnWidth>
+      <ValueColumnWidth column_width="125"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="4" />
+   <wvobject type="logic" fp_name="/tb_act2_3/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group217">
+      <obj_property name="label">Botones</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_act2_3/resetN">
+         <obj_property name="ElementShortName">resetN</obj_property>
+         <obj_property name="ObjectShortName">resetN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/dut/sync/o_PB_sync">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">o_PB_sync</obj_property>
+         <obj_property name="ObjectShortName">o_PB_sync</obj_property>
+         <obj_property name="label">reset_sync</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/dut/RPCalc_inst/pressed">
+         <obj_property name="ElementShortName">pressed</obj_property>
+         <obj_property name="ObjectShortName">pressed</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/in_Undo">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">in_Undo</obj_property>
+         <obj_property name="ObjectShortName">in_Undo</obj_property>
+         <obj_property name="label">Undo</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/in_DisplayFormat">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">in_DisplayFormat</obj_property>
+         <obj_property name="ObjectShortName">in_DisplayFormat</obj_property>
+         <obj_property name="label">DisplayFormat</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_act2_3/dut/DataIn">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">DataIn[15:0]</obj_property>
+      <obj_property name="ObjectShortName">DataIn[15:0]</obj_property>
+      <obj_property name="label">Data In</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group192">
+      <obj_property name="label">Translator</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="group" fp_name="group195">
+         <obj_property name="label">Estados de Act2</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/tb_act2_3/dut/sync/o_PB_sync">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">o_PB_sync</obj_property>
+            <obj_property name="ObjectShortName">o_PB_sync</obj_property>
+            <obj_property name="label">reset_sync</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/in_Enter">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">in_Enter</obj_property>
+            <obj_property name="ObjectShortName">in_Enter</obj_property>
+            <obj_property name="label">Enter</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/dut/RPCalc_inst/pressed">
+            <obj_property name="ElementShortName">pressed</obj_property>
+            <obj_property name="ObjectShortName">pressed</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/in_Undo">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">in_Undo</obj_property>
+            <obj_property name="ObjectShortName">in_Undo</obj_property>
+            <obj_property name="label">Undo</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2_3/dut/translator_inst/conv/pr_state">
+            <obj_property name="ElementShortName">pr_state[7:0]</obj_property>
+            <obj_property name="ObjectShortName">pr_state[7:0]</obj_property>
+            <obj_property name="Radix">BINARYRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2_3/dut/translator_inst/i_currentState">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">i_currentState[7:0]</obj_property>
+            <obj_property name="ObjectShortName">i_currentState[7:0]</obj_property>
+            <obj_property name="Radix">BINARYRADIX</obj_property>
+            <obj_property name="label">nx_state</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/dut/translator_inst/conv/update">
+            <obj_property name="ElementShortName">update</obj_property>
+            <obj_property name="ObjectShortName">update</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group201">
+         <obj_property name="label">FSM trigger</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/tb_act2_3/dut/sync/o_PB_sync">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">o_PB_sync</obj_property>
+            <obj_property name="ObjectShortName">o_PB_sync</obj_property>
+            <obj_property name="label">reset_sync</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2_3/dut/translator_inst/conv/fsm/t">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">t[7:0]</obj_property>
+            <obj_property name="ObjectShortName">t[7:0]</obj_property>
+            <obj_property name="label">t</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/dut/translator_inst/conv/fsm/i_update">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">i_update</obj_property>
+            <obj_property name="ObjectShortName">i_update</obj_property>
+            <obj_property name="label">update</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2_3/dut/translator_inst/conv/fsm/pr_state">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">pr_state[3:0]</obj_property>
+            <obj_property name="ObjectShortName">pr_state[3:0]</obj_property>
+            <obj_property name="label">pr_state</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/dut/translator_inst/conv/fsm/o_trigger">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">o_trigger</obj_property>
+            <obj_property name="ObjectShortName">o_trigger</obj_property>
+            <obj_property name="label">trigger</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group194">
+         <obj_property name="label">Formatos de Salida</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="array" fp_name="/tb_act2_3/dut/translator_inst/i_toDisplay_bin">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">i_toDisplay_bin[15:0]</obj_property>
+            <obj_property name="ObjectShortName">i_toDisplay_bin[15:0]</obj_property>
+            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            <obj_property name="label">toDisplay_bin</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2_3/dut/translator_inst/toDisplay_bcd">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">toDisplay_bcd[19:0]</obj_property>
+            <obj_property name="ObjectShortName">toDisplay_bcd[19:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="label">toDisplay_bcd</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/dut/translator_inst/i_displayFormat">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">i_displayFormat</obj_property>
+            <obj_property name="ObjectShortName">i_displayFormat</obj_property>
+            <obj_property name="label">displayFormat</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2_3/dut/translator_inst/bcd_in">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">bcd_in[19:0]</obj_property>
+            <obj_property name="ObjectShortName">bcd_in[19:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="label">BCD_in</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group206">
+         <obj_property name="label">Salidas</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/tb_act2_3/dut/translator_inst/bcd_in">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">bcd_in[19:0]</obj_property>
+            <obj_property name="ObjectShortName">bcd_in[19:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="label">BCD_in</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2_3/out_Segments">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">out_Segments[6:0]</obj_property>
+            <obj_property name="ObjectShortName">out_Segments[6:0]</obj_property>
+            <obj_property name="label">Segments</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/out_Anodes[4]">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[4]</obj_property>
+            <obj_property name="ObjectShortName">[4]</obj_property>
+            <obj_property name="label">AN[4]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/out_Anodes[3]">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[3]</obj_property>
+            <obj_property name="ObjectShortName">[3]</obj_property>
+            <obj_property name="label">AN[3]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/out_Anodes[2]">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[2]</obj_property>
+            <obj_property name="ObjectShortName">[2]</obj_property>
+            <obj_property name="label">AN[2]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/out_Anodes[1]">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[1]</obj_property>
+            <obj_property name="ObjectShortName">[1]</obj_property>
+            <obj_property name="label">AN[1]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2_3/out_Anodes[0]">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[0]</obj_property>
+            <obj_property name="ObjectShortName">[0]</obj_property>
+            <obj_property name="label">AN[0]</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+</wave_config>
