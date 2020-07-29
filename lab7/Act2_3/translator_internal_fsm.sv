@@ -1,26 +1,16 @@
 module translator_internal_fsm(
         input  logic i_clk, i_reset,
-        input  logic i_update,
+        input  logic i_update, i_idle,
         output logic o_trigger
     );
 
 
-    typedef enum logic [3:0] {
-        IDLE    = 'b0001, 
-        WAIT    = 'b0010, 
-        WAITING = 'b0100, 
-        LOAD    = 'b1000
+    typedef enum logic [2:0] {
+        IDLE    = 'b001, 
+        WAIT    = 'b010, 
+        LOAD    = 'b100
     } state;
     state pr_state, nx_state;
-
-    // Timer-related declarations:
-
-    // Aquí nos aprovechamos de que unsigned_to_bcd no tarda más de 63 periodos 
-    // en convertir un dígito, entonces hay que esperar eso como máximo para que
-    // vuelva a IDLE y poder actualizar el dato.
-
-    const logic [7:0] tmax = 65;
-    logic       [7:0] t;
 
     //FSM state register:
     always_ff @(posedge i_clk) begin
@@ -28,13 +18,6 @@ module translator_internal_fsm(
         else         pr_state <= nx_state;
     end
 
-    always_ff @(posedge i_clk) begin
-        if      (i_reset)                t <= 0;
-        else if (pr_state == WAIT)     t <= 0;
-        else if (pr_state == WAITING)  t <= t + 1;
-    end
-
-    
     // FSM next state combinational logic:
     always_comb begin
         nx_state = pr_state;
@@ -45,13 +28,7 @@ module translator_internal_fsm(
             end
 
             WAIT: begin
-                if(i_update)  nx_state = WAIT;
-                else          nx_state = WAITING;
-            end
-
-            WAITING: begin
-                if(i_update)        nx_state = WAIT;
-                else if (t == tmax) nx_state = LOAD;
+                if(i_idle)  nx_state = LOAD;
             end
 
             LOAD: begin

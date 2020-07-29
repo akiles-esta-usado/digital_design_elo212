@@ -51,6 +51,19 @@ module tb_act2_3();
     localparam OR    = 'd2;
     localparam AND   = 'd3;
 
+
+    task automatic fast_switching( 
+            ref logic button, 
+            input int interval = 'd20, repetitions = 3
+        );
+        repeat (repetitions) begin
+            button = ~button;
+            #(interval*period);
+            button = ~button;
+        end
+    endtask;
+
+
     task automatic flip_button( 
             ref logic button, 
             input int interval = 'd20
@@ -64,7 +77,7 @@ module tb_act2_3();
     task automatic put_data(
             ref logic [15:0] dataIn,
             input int        value,
-            input int        interval = 600
+            input int        interval = 140
         );
         dataIn = value;
         flip_button(in_Enter);
@@ -83,6 +96,9 @@ module tb_act2_3();
         put_data(in_DataIn, 'd5);
         put_data(in_DataIn, SUMA);
 
+        fast_switching(in_DisplayFormat);
+
+        #50;
 
         $finish;
     end

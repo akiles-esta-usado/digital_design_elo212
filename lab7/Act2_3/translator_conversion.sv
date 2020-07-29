@@ -30,14 +30,15 @@ module translator_conversion #(parameter STATE_BITS = 8) (
     end
 
     logic trigger;
+    logic idle; // de unsigned_to_bcd
     translator_internal_fsm fsm(
         .i_clk     (i_clk), 
         .i_reset   (i_reset),
         .i_update  (update),
+        .i_idle    (idle),
         .o_trigger (trigger)
     );
 
-    logic        idle; // Dummy
     logic [31:0] bcd_wrapper;
     logic [31:0] in_wrapper;
 
