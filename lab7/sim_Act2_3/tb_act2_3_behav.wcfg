@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_act2_3_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_act2_3" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="229601fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="108"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject type="logic" fp_name="/tb_act2_3/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_act2_3/resetN">
+      <obj_property name="ElementShortName">resetN</obj_property>
+      <obj_property name="ObjectShortName">resetN</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider40" type="divider">
+      <obj_property name="label">ENTRADAS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_act2_3/in_Enter">
+      <obj_property name="ElementShortName">in_Enter</obj_property>
+      <obj_property name="ObjectShortName">in_Enter</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_act2_3/in_Undo">
+      <obj_property name="ElementShortName">in_Undo</obj_property>
+      <obj_property name="ObjectShortName">in_Undo</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_act2_3/in_DisplayFormat">
+      <obj_property name="ElementShortName">in_DisplayFormat</obj_property>
+      <obj_property name="ObjectShortName">in_DisplayFormat</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_act2_3/in_DataIn">
+      <obj_property name="ElementShortName">in_DataIn[15:0]</obj_property>
+      <obj_property name="ObjectShortName">in_DataIn[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider41" type="divider">
+      <obj_property name="label">INTERNO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group49">
+      <obj_property name="label">Enter Button</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/tb_act2_3/dut/RPCalc_inst/status_button/PB">
+         <obj_property name="ElementShortName">PB</obj_property>
+         <obj_property name="ObjectShortName">PB</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/dut/RPCalc_inst/status_button/PB_pressed_pulse">
+         <obj_property name="ElementShortName">PB_pressed_pulse</obj_property>
+         <obj_property name="ObjectShortName">PB_pressed_pulse</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group52">
+      <obj_property name="label">Undo Button</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/tb_act2_3/dut/RPCalc_inst/status_button_undo/PB">
+         <obj_property name="ElementShortName">PB</obj_property>
+         <obj_property name="ObjectShortName">PB</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/dut/RPCalc_inst/status_button_undo/PB_pressed_pulse">
+         <obj_property name="ElementShortName">PB_pressed_pulse</obj_property>
+         <obj_property name="ObjectShortName">PB_pressed_pulse</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group46">
+      <obj_property name="label">Act2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/tb_act2_3/dut/RPCalc_inst/pressed">
+         <obj_property name="ElementShortName">pressed</obj_property>
+         <obj_property name="ObjectShortName">pressed</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/dut/RPCalc_inst/pressed_undo">
+         <obj_property name="ElementShortName">pressed_undo</obj_property>
+         <obj_property name="ObjectShortName">pressed_undo</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/dut/RPCalc_inst/displaySel">
+         <obj_property name="ElementShortName">displaySel</obj_property>
+         <obj_property name="ObjectShortName">displaySel</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_act2_3/dut/RPCalc_inst/DataOut">
+         <obj_property name="ElementShortName">DataOut[15:0]</obj_property>
+         <obj_property name="ObjectShortName">DataOut[15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="divider39" type="divider">
+      <obj_property name="label">SALIDAS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_act2_3/out_Flags">
+      <obj_property name="ElementShortName">out_Flags[3:0]</obj_property>
+      <obj_property name="ObjectShortName">out_Flags[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_act2_3/out_CurrentState">
+      <obj_property name="ElementShortName">out_CurrentState[6:0]</obj_property>
+      <obj_property name="ObjectShortName">out_CurrentState[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_act2_3/out_Segments">
+      <obj_property name="ElementShortName">out_Segments[6:0]</obj_property>
+      <obj_property name="ObjectShortName">out_Segments[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group31">
+      <obj_property name="label">Anodos</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/tb_act2_3/out_Anodes[4]">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+         <obj_property name="label">AN[4]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/out_Anodes[3]">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+         <obj_property name="label">AN[3]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/out_Anodes[2]">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+         <obj_property name="label">AN[2]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/out_Anodes[1]">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+         <obj_property name="label">AN[1]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2_3/out_Anodes[0]">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+         <obj_property name="label">AN[0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

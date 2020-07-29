@@ -4,8 +4,10 @@ module Act2_RPCalculator #(parameter N_debouncer = 10) (
         input  logic [15:0] DataIn,
         output logic [3:0]  Flags, // [3:0] = {N, Z, C, V}
         output logic [15:0] ToDisplay,
-        output logic [6:0]  CurrentState
+        output logic [7:0]  CurrentState
     );
+
+    localparam STATE_BITS = 8;
 
     logic reset;
     synchronizer sync(
@@ -39,7 +41,7 @@ module Act2_RPCalculator #(parameter N_debouncer = 10) (
 
     logic        displaySel;
     logic [15:0] DataOut;
-    polish_calculator_undo #(.WIDTH(16)) pol_cal (
+    polish_calculator_undo #(.WIDTH(16), .STATE_BITS(STATE_BITS)) pol_cal (
         .clk          (clk),
         .reset        (reset),
         .Enter        (pressed),

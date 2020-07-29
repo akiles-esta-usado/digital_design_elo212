@@ -2,17 +2,17 @@
     Este modulo realiza la convesión de formato binario a BCD
  */
 
-module translator_conversion (
-        input  logic        i_clk, i_reset,
-        input        [6:0]  i_currentState,
-        input        [15:0] i_toDisplay_bin,
-        output       [19:0] o_bcd
+module translator_conversion #(parameter STATE_BITS = 8) (
+        input  logic                  i_clk, i_reset,
+        input  logic [STATE_BITS-1:0] i_currentState,
+        input  logic [15:0]           i_toDisplay_bin,
+        output logic [19:0]           o_bcd
     );
 
     logic update;
 
-    logic [6:0] pr_state;
-    logic [6:0] nx_state;
+    logic [STATE_BITS-1:0] pr_state;
+    logic [STATE_BITS-1:0] nx_state;
 
     always_ff @(posedge i_clk) begin
         if (i_reset) begin
@@ -25,7 +25,7 @@ module translator_conversion (
 
     always_comb begin
         nx_state = pr_state;
-        update   = (pr_state != i_currentState) ? 'd1 : 'd0 ;
+        update   = (pr_state != i_currentState) ? 1'b1 : 1'b0 ;
         nx_state = i_currentState;
     end
 
@@ -45,6 +45,7 @@ module translator_conversion (
         in_wrapper       = 'd0;
         in_wrapper[15:0] = i_toDisplay_bin;
     end
+
     unsigned_to_bcd to_bcd_inst(
         .clk     (i_clk),
         .trigger (trigger),

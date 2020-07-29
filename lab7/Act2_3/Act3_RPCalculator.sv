@@ -3,14 +3,16 @@ module Act3_RPCalculator #(parameter N_debouncer = 10) (
         input  logic        Enter, Undo, DisplayFormat,
         input  logic [15:0] DataIn,
         output logic [3:0]  Flags,
-        output logic [6:0]  CurrentState,
+        output logic [7:0]  CurrentState,
         output logic [6:0]  Segments, // Segments[0] = CA -> {CG, ..., CA}
         output logic [4:0]  Anodes    // Anodes[0] = AN0  -> {AN3, AN2, AN1, AN0}
     );
 
+    localparam STATE_BITS = 8;
+
     logic [15:0] toTranslator;
 
-    Act2_RPCalculator RPCalc_inst (
+    Act2_RPCalculator  RPCalc_inst (
         .clk            (clk), 
         .resetN         (resetN), 
         .Enter          (Enter), 
@@ -31,7 +33,7 @@ module Act3_RPCalculator #(parameter N_debouncer = 10) (
     );
 
 
-    translator translator_inst (
+    translator #(8) translator_inst (
         .i_clk           (clk),
         .i_reset         (reset),
         .i_currentState  (CurrentState),

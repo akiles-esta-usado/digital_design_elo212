@@ -22,7 +22,7 @@ module polish_calculator #(parameter WIDTH = 16) (
     } state;
 
     (* fsm_encoding = "one_hot" *) state pr_state;  
-    state nx_state;  
+    state nx_state;
 
 
     reg_ALU #(.WIDTH(WIDTH)) ALU_inst (
@@ -112,7 +112,7 @@ module polish_calculator #(parameter WIDTH = 16) (
             Load_Result: begin
                 nx_state = Show_Result;
             end
-            
+
             Show_Result: begin
                 if (Enter) nx_state = Wait_OPA;
             end

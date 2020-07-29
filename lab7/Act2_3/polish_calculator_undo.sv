@@ -1,23 +1,24 @@
-module polish_calculator_undo #(parameter WIDTH = 16) (
-        input  logic             clk, reset,
-        input  logic             Enter, Undo,
-        input  logic [WIDTH-1:0] DataIn,
-        output logic [WIDTH-1:0] DataOut,
-        output logic [6:0]       CurrentState,
-        output logic             toDisplaySel,
-        output logic [3:0]       Flags
+module polish_calculator_undo #(parameter WIDTH = 16, STATE_BITS = 8) (
+        input  logic                  clk, reset,
+        input  logic                  Enter, Undo,
+        input  logic [WIDTH-1:0]      DataIn,
+        output logic [WIDTH-1:0]      DataOut,
+        output logic [STATE_BITS-1:0] CurrentState,
+        output logic                  toDisplaySel,
+        output logic [3:0]            Flags
     );
 
     logic load_A, load_B, load_Op, update_Res; // esta bien tratarlos como salidas en FSM? 
 
-    typedef enum logic [6:0] {
-        Wait_OPA    = 'b0000001,
-        Load_OPA    = 'b0000010,
-        Wait_OPB    = 'b0000100,
-        Load_OPB    = 'b0001000,
-        Wait_OpCode = 'b0010000,
-        Load_OpCode = 'b0100000,
-        Show_Result = 'b1000000
+    typedef enum logic [STATE_BITS-1:0] {
+        Wait_OPA    = 'b00000001,
+        Load_OPA    = 'b00000010,
+        Wait_OPB    = 'b00000100,
+        Load_OPB    = 'b00001000,
+        Wait_OpCode = 'b00010000,
+        Load_OpCode = 'b00100000,
+        Load_Result = 'b01000000,
+        Show_Result = 'b10000000
     } state;
 
     (* fsm_encoding = "one_hot" *) state pr_state;  
@@ -50,10 +51,10 @@ module polish_calculator_undo #(parameter WIDTH = 16) (
         load_B       = 1'b0;
         load_Op      = 1'b0;
         update_Res   = 1'b0;
+        toDisplaySel = 1'd0;
 
         CurrentState = pr_state;
 
-        toDisplaySel = 'd1;
 
         case (pr_state)
             Load_OPA: begin
@@ -68,9 +69,12 @@ module polish_calculator_undo #(parameter WIDTH = 16) (
                 load_Op      = 1'b1;
             end
 
-            Show_Result: begin
+            Load_Result: begin
                 update_Res   = 1'b1;
-                toDisplaySel = 1'b0;
+            end
+
+            Show_Result: begin
+                toDisplaySel = 1'b1;
             end
 
         endcase
@@ -105,6 +109,10 @@ module polish_calculator_undo #(parameter WIDTH = 16) (
             end
 
             Load_OpCode: begin
+                nx_state = Load_Result;
+            end
+
+            Load_Result: begin
                 nx_state = Show_Result;
             end
 

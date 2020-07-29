@@ -47,6 +47,10 @@ module tb_act2_3();
     );
 
     initial begin
+        in_Undo          = 'd0;
+        in_DataIn        = 'd0;
+        in_DisplayFormat = 'd0;
+        in_Enter         = 'd0;
         #(reset_duration); // Se comienza cuando el reset termina
 
         // Ajustar un valor, 10
