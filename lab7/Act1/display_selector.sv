@@ -5,6 +5,6 @@ module display_selector(
         output logic [15:0] o_to_display
     );
 
-    assign o_to_display = (i_selector == 'd1) ? i_data_in : i_result;
+    assign o_to_display = (i_selector == 'd0) ? i_data_in : i_result;
 
 endmodule

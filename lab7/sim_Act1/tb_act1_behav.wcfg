@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="3722069fs"></ZoomStartTime>
-      <ZoomEndTime time="3877987fs"></ZoomEndTime>
-      <Cursor1Time time="3852000fs"></Cursor1Time>
+      <ZoomStartTime time="2643088fs"></ZoomStartTime>
+      <ZoomEndTime time="2746889fs"></ZoomEndTime>
+      <Cursor1Time time="2680000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="165"></NameColumnWidth>
-      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+      <ValueColumnWidth column_width="71"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="16" />
    <wvobject fp_name="/tb_act1/clk" type="logic">
@@ -119,7 +119,6 @@
    <wvobject fp_name="group48" type="group">
       <obj_property name="label">ALU</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_act1/dut/pol_cal/ALU_inst/ALU_inst/A" type="array">
          <obj_property name="ElementShortName">A[15:0]</obj_property>
          <obj_property name="ObjectShortName">A[15:0]</obj_property>
@@ -176,7 +175,32 @@
    <wvobject fp_name="/tb_act1/out_Flags" type="array">
       <obj_property name="ElementShortName">out_Flags[3:0]</obj_property>
       <obj_property name="ObjectShortName">out_Flags[3:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_act1/out_Flags[3]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+         <obj_property name="label">[3] N</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_act1/out_Flags[2]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+         <obj_property name="label">[2] Z</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_act1/out_Flags[1]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+         <obj_property name="label">[1] C</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_act1/out_Flags[0]" type="logic">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+         <obj_property name="label">[0] V</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="/tb_act1/out_ToDisplay" type="array">
       <obj_property name="ElementShortName">out_ToDisplay[15:0]</obj_property>
@@ -184,8 +208,8 @@
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_act1/out_CurrentState" type="array">
-      <obj_property name="ElementShortName">out_CurrentState[3:0]</obj_property>
-      <obj_property name="ObjectShortName">out_CurrentState[3:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+      <obj_property name="ElementShortName">out_CurrentState[6:0]</obj_property>
+      <obj_property name="ObjectShortName">out_CurrentState[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
 </wave_config>

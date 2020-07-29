@@ -107,7 +107,7 @@ module tb_act1();
         // Ajustar un valor, -10
         #(period);
         in_Enter = 'd1;
-        in_DataIn = -'d10;
+        in_DataIn = -'d11;
         #(20 * period);
         in_Enter = 'd0;
 
