@@ -23,7 +23,8 @@ module semaforoTimer #(parameter DELAY = 5) (
     always_ff @(posedge clock) begin
         if (reset) delay_timer <= 0;
         else if (state != next_state) delay_timer <= 0; // reset the timer when state changes
-        else delay_timer <= delay_timer + 1;
+        else if (delay_timer < DELAY-1) delay_timer <= delay_timer + 1;
+        else if (delay_timer >= DELAY-1) delay_timer <= delay_timer;
     end
     
     // one combinational block computes the next_state and outputs for the
@@ -38,14 +39,14 @@ module semaforoTimer #(parameter DELAY = 5) (
     	case (state)
     		STATE_0: begin
     			     LA = GREEN;
-    			     if(TA == 1'b0 && (delay_timer >= DELAY-1)) begin
+    			     if ((TA == 1'b1) && (delay_timer >= DELAY-1)) begin
     			 	   next_state = STATE_1;
     		         end
     		    end
 
             STATE_1: begin
                     LA = YELLOW;
-                    if(delay_timer >= DELAY-1) begin
+                    if (delay_timer >= DELAY-1) begin
     			 	   next_state = STATE_2;
     		        end
 
@@ -53,14 +54,14 @@ module semaforoTimer #(parameter DELAY = 5) (
             
             STATE_2: begin
                     LB = GREEN;
-                    if(TB == 1'b0 && (delay_timer >= DELAY-1)) begin
+                    if ((TB == 1'b1) && (delay_timer >= DELAY-1)) begin
                         next_state = STATE_3;
                     end
                 end
 
             STATE_3: begin
                     LB = YELLOW;
-                    if(delay_timer >= DELAY-1) begin
+                    if (delay_timer >= DELAY-1) begin
     			 	   next_state = STATE_0;
     		        end
                 end                

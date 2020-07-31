@@ -40,21 +40,28 @@ module tb_semaforoTimer();
         );
             
 	// generate a clock signal that inverts its value every five time units
-	always  #10 clock=~clock;
+	always  #5 clock=~clock;
 	
 	//here we assign values to the inputs
 	initial begin
 
 		clock = 1'b0;
 		reset = 1'b1;
-		TA = 1'b1;
-		TB = 1'b1;	
-		#50 reset = 1'b0;
+		TA = 1'b0;
+		TB = 1'b0;	
+		#20 reset = 1'b0;
 		
-		#100 TA = 1'b0;
-		#120 TA = 1'b1;
-		#180 TB = 1'b0;
-		#200 TB = 1'b1;
+		#97 TA = 1'b1;
+		#23 TA = 1'b0;
+		#171 TB = 1'b1;
+		#27 TB = 1'b0;
+		
+		#97 TB = 1'b1;
+		#27 TB = 1'b0;
+		#97 TA = 1'b1;
+		#23 TA = 1'b0;
+		#171 TA = 1'b1;
+		#23 TA = 1'b0;
 
 	end
 

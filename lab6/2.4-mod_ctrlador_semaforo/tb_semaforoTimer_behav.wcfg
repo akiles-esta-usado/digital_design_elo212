@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_semaforoTimer_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_semaforoTimer" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="819001fs"></ZoomEndTime>
+      <Cursor1Time time="792000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="165"></NameColumnWidth>
+      <ValueColumnWidth column_width="63"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="12" />
+   <wvobject type="divider" fp_name="divider92">
+      <obj_property name="label">Sistema</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#00FFFF</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_semaforoTimer/clock" type="logic">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_semaforoTimer/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider93">
+      <obj_property name="label">Botones</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFFF00</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_semaforoTimer/TA" type="logic">
+      <obj_property name="ElementShortName">TA</obj_property>
+      <obj_property name="ObjectShortName">TA</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_semaforoTimer/TB" type="logic">
+      <obj_property name="ElementShortName">TB</obj_property>
+      <obj_property name="ObjectShortName">TB</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider95">
+      <obj_property name="label">Semaforo</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#808080</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_semaforoTimer/LA" type="array">
+      <obj_property name="ElementShortName">LA[1:0]</obj_property>
+      <obj_property name="ObjectShortName">LA[1:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_semaforoTimer/LB" type="array">
+      <obj_property name="ElementShortName">LB[1:0]</obj_property>
+      <obj_property name="ObjectShortName">LB[1:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider94">
+      <obj_property name="label">Estados</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFA500</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_semaforoTimer/DUT/state" type="array">
+      <obj_property name="ElementShortName">state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">state[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_semaforoTimer/DUT/delay_timer" type="array">
+      <obj_property name="ElementShortName">delay_timer[2:0]</obj_property>
+      <obj_property name="ObjectShortName">delay_timer[2:0]</obj_property>
+   </wvobject>
+</wave_config>
