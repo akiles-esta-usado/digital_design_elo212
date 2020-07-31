@@ -1,6 +1,5 @@
 module translator #(STATE_BITS = 8)(
         input  logic                  i_clk, i_reset,
-        input  logic [STATE_BITS-1:0] i_currentState,
         input  logic                  i_displayFormat,
         input  logic [15:0]           i_toDisplay_bin,
         output logic [6:0]            o_segments, // Segments[0] = CA -> {CG, ..., CA}
@@ -10,14 +9,20 @@ module translator #(STATE_BITS = 8)(
     logic [19:0] bcd_in;
     logic [19:0] toDisplay_bcd;
 
+
+    /*******************************/
+    /* Traducción de binario a BCD */
+    /*******************************/
     translator_conversion #(STATE_BITS) conv(
         .i_clk           (i_clk),
         .i_reset         (i_reset),
-        .i_currentState  (i_currentState),
         .i_toDisplay_bin (i_toDisplay_bin),
         .o_bcd           (toDisplay_bcd)
     );
 
+    /*************************************/
+    /* Selección en base a DisplayFormat */
+    /*************************************/
     assign bcd_in = (i_displayFormat == 1'b1) ? toDisplay_bcd : {4'b0000, i_toDisplay_bin};
 
     logic [7:0]  anodes_wrapper;

@@ -78,7 +78,7 @@ module PB_Debouncer_FSM #(parameter DELAY=15) (
                 PB_released_pulse = 1'b1;
                 next_state = PB_IDLE;
             end    
-         endcase
+        endcase
 
     // sequential block for FSM. When clock ticks, update the state
     always@(posedge clk) begin

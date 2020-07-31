@@ -69,3 +69,34 @@ en el semáforo, hay una parte interesante en Cross Boundaries
 [synth_top_level_to_pulse index md](synth_top_level_to_pulse/index.md)
 [synth_top_semaforo_led index md](synth_top_semaforo_led/index.md)
 
+
+
+# 9: Basic I/O
+## Botones
+Se conectan a la FPGA con resistores para evitar cortocircuitos
+
+### Configuración 'signo más'
+Son 5 botones, dependiendo del estado generan las siguientes salidas:
+- baja si está libres
+- Alta si está presionado
+
+## Leds
+### LEDS individuales
+se conectan por el ánodo a la FPGA mediante una resistencia de 330 ohm
+
+Se encienden cuando se aplica alto voltaje
+
+### LEDS No accesibles
+Indican potencia, estado programable de la FPGA, estado del puerto ethernet y USB
+
+## Tri-Color LED
+Hay 2 leds tricolores de 3 leds internos (rojo, azul, verde) 
+
+Poner en alto alguno el pin de algun led lo iluminará.
+
+Se recomienda el uso de PWD. Llevarlos directamente a 1 puede resultar en un brillo molesto y disminución de vida útil.
+
+Hay que ajustar el ciclo de trabajo para que esté en [0-50]%
+
+## Observación
+Los cortocicuitos de los switches y botónes suelen generarse al asignarlas como salidas.

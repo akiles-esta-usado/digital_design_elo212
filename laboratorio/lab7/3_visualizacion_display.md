@@ -34,3 +34,19 @@ Verifique cuidadosamente:
 
 En la validación funcional, el driver del display debe utilizar el mismo reloj base del sistema para multiplexar ánodos.
 
+# Solución
+## Sintesis
+[Act3_sintesis index md](Act3_sintesis/index.md)
+
+## Simulación
+Primero explica que va a realizar el testbench, la operación 10 - -5
+
+Indica como se relaciona el cambio de estado con update, y luego la máquina de estado FSM y como lo hace para generar Trigger
+
+La selección de formato es algo que se puede probar cuando estamos en fast_switching
+
+Hay que comprobar que los segmentos y ánodos coinciden con el número en hexadecimal y binario.
+
+## VERIFICAR
+Que las flags tengan un valor correcto
+

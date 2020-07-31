@@ -4,30 +4,36 @@
 
 module translator_conversion #(parameter STATE_BITS = 8) (
         input  logic                  i_clk, i_reset,
-        input  logic [STATE_BITS-1:0] i_currentState,
         input  logic [15:0]           i_toDisplay_bin,
         output logic [19:0]           o_bcd
     );
 
     logic update;
 
-    logic [STATE_BITS-1:0] pr_state;
-    logic [STATE_BITS-1:0] nx_state;
+    /****************************************/
+    /* Lógica de cambio de estado -> update */
+    /****************************************/
+    logic [15:0] pr_dataIn;
+    logic [15:0] nx_dataIn;
 
     always_ff @(posedge i_clk) begin
         if (i_reset) begin
-            pr_state <= 'd0;
+            pr_dataIn <= 'd0;
         end
         else begin
-            pr_state <= nx_state;
+            pr_dataIn <= nx_dataIn;
         end
     end
 
     always_comb begin
-        nx_state = pr_state;
-        update   = (pr_state != i_currentState) ? 1'b1 : 1'b0 ;
-        nx_state = i_currentState;
+        nx_dataIn = pr_dataIn;
+        update   = (pr_dataIn != i_toDisplay_bin) ? 1'b1 : 1'b0 ;
+        nx_dataIn = i_toDisplay_bin;
     end
+
+    /********************/
+    /* Resto de módulos */
+    /********************/
 
     logic trigger;
     logic idle; // de unsigned_to_bcd

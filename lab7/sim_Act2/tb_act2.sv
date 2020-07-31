@@ -11,7 +11,7 @@ localparam reset_duration = 3.2 * period; // duración del reset
 ///////////////////////////////////
 // Modifica el nombre del testbench
 ///////////////////////////////////
-module tb_act2_3();
+module tb_act2();
     timeunit      1ns;
     timeprecision 100ps;
 
@@ -22,45 +22,31 @@ module tb_act2_3();
     // Es para agruparlas, pero perfectamente se pueden borrar
     //////////////////////////////////////////////////////////
 
-    logic        in_Enter, in_Undo, in_DisplayFormat;
+    logic        in_Enter, in_Undo;
     logic [15:0] in_DataIn;
     logic [3:0]  out_Flags;
     logic [6:0]  out_CurrentState;
-    logic [6:0]  out_Segments;
-    logic [4:0]  out_Anodes;
+    logic [15:0] out_ToDisplay;
     //////////////////////////////////////////
     // Modifica las entradas y el tipo del DUT
     //////////////////////////////////////////
     
     
-    Act3_RPCalculator dut(
+    Act2_RPCalculator dut(
         .clk               (clk),
         .resetN            (resetN),
         .Enter             (in_Enter),
-        .Undo           (in_Undo),
-        .DisplayFormat  (in_DisplayFormat),
+        .Undo              (in_Undo),
         .DataIn            (in_DataIn),
         .Flags             (out_Flags),
-        .CurrentState      (out_CurrentState),
-        .Segments          (out_Segments),
-        .Anodes            (out_Anodes)
+        .ToDisplay         (out_ToDisplay),
+        .CurrentState      (out_CurrentState)
     );
 
     localparam SUMA  = 'd0;
     localparam RESTA = 'd1;
     localparam OR    = 'd2;
     localparam AND   = 'd3;
-
-
-    task automatic fast_switching( 
-            ref logic button, 
-            input int interval = 'd20, repetitions = 4
-        );
-        repeat (repetitions) begin
-            button = ~button;
-            #(interval*period);
-        end
-    endtask;
 
     task automatic flip_button( 
             ref logic button, 
@@ -75,7 +61,7 @@ module tb_act2_3();
     task automatic put_data(
             ref logic [15:0] dataIn,
             input int        value,
-            input int        interval = 140
+            input int        interval = 20
         );
         dataIn = value;
         flip_button(in_Enter);
@@ -85,24 +71,29 @@ module tb_act2_3();
     initial begin
         in_Undo          = 'd0;
         in_DataIn        = 'd0;
-        in_DisplayFormat = 'd0;
         in_Enter         = 'd0;
-        #(reset_duration); // Se comienza cuando el reset termina
+        #(reset_duration);
 
-        put_data(in_DataIn, 'd10);
-        fast_switching(in_DisplayFormat);
+        // Realizamos la operación 10 + 5
+        put_data(in_DataIn, 'd10);  // -> Wait_B
+        put_data(in_DataIn, 'd5);   // -> Wait_OpCode
+        put_data(in_DataIn, SUMA);  // -> Show_Result
 
-        put_data(in_DataIn, -'d5);
-        fast_switching(in_DisplayFormat);
+        // Borramos la operación
+        flip_button(in_Undo);       // -> Wait_OpCode
+        flip_button(in_Undo);       // -> Wait_B
+        flip_button(in_Undo);       // -> Wait_A
+        flip_button(in_Undo);       // -> Wait_A
+        flip_button(in_Undo);       // -> Wait_A
 
-        put_data(in_DataIn, RESTA);
-        fast_switching(in_DisplayFormat);
+        // Realizamos la operación 10 - (-5)
+        put_data(in_DataIn, 'd20);  // -> Wait_B
+        put_data(in_DataIn, -'d5);  // -> Wait_OpCode
+        put_data(in_DataIn, RESTA); // -> Show_Result
 
-        flip_button(in_Enter);
-        #(period * 140);
-        fast_switching(in_DisplayFormat);
+        flip_button(in_Enter);      // -> Wait_A
 
-        #50;
+        #(16 * period);
 
         $finish;
     end

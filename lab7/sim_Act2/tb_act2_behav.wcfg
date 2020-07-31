@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_act2_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_ALU_sv " />
+            <top_module name="glbl" />
+            <top_module name="tb_act2" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2320000fs"></ZoomStartTime>
+      <ZoomEndTime time="2501714fs"></ZoomEndTime>
+      <Cursor1Time time="3912000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="223"></NameColumnWidth>
+      <ValueColumnWidth column_width="109"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="4" />
+   <wave_markers>
+      <marker label="" time="450000" />
+      <marker label="" time="860000" />
+      <marker label="" time="3140000" />
+      <marker label="" time="3550000" />
+      <marker label="" time="1480000" />
+      <marker label="" time="1270000" />
+      <marker label="" time="2110000" />
+      <marker label="" time="1900000" />
+      <marker label="" time="1690000" />
+      <marker label="" time="2730000" />
+      <marker label="" time="60000" />
+      <marker label="" time="2320000" />
+   </wave_markers>
+   <wvobject type="logic" fp_name="/tb_act2/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group197">
+      <obj_property name="label">Entradas</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/tb_act2/resetN">
+         <obj_property name="ElementShortName">resetN</obj_property>
+         <obj_property name="ObjectShortName">resetN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2/dut/reset">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2/in_Enter">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">in_Enter</obj_property>
+         <obj_property name="ObjectShortName">in_Enter</obj_property>
+         <obj_property name="label">Enter</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2/dut/pressed">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">pressed</obj_property>
+         <obj_property name="ObjectShortName">pressed</obj_property>
+         <obj_property name="label">Enter_pressed</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2/in_Undo">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">in_Undo</obj_property>
+         <obj_property name="ObjectShortName">in_Undo</obj_property>
+         <obj_property name="label">Undo</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/tb_act2/dut/pressed_undo">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">pressed_undo</obj_property>
+         <obj_property name="ObjectShortName">pressed_undo</obj_property>
+         <obj_property name="label">Undo_pressed</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_act2/in_DataIn">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">in_DataIn[15:0]</obj_property>
+         <obj_property name="ObjectShortName">in_DataIn[15:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+         <obj_property name="label">DataIn</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group222">
+      <obj_property name="label">Calculadora Polaca</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="group" fp_name="group253">
+         <obj_property name="label">Enter PushButton</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/tb_act2/dut/status_button/PB">
+            <obj_property name="ElementShortName">PB</obj_property>
+            <obj_property name="ObjectShortName">PB</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2/dut/status_button/PB_pressed_status">
+            <obj_property name="ElementShortName">PB_pressed_status</obj_property>
+            <obj_property name="ObjectShortName">PB_pressed_status</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2/dut/status_button/PB_pressed_pulse">
+            <obj_property name="ElementShortName">PB_pressed_pulse</obj_property>
+            <obj_property name="ObjectShortName">PB_pressed_pulse</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2/dut/status_button/PB_sync">
+            <obj_property name="ElementShortName">PB_sync</obj_property>
+            <obj_property name="ObjectShortName">PB_sync</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group209">
+         <obj_property name="label">Cambio de Estado</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/tb_act2/dut/pressed">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">pressed</obj_property>
+            <obj_property name="ObjectShortName">pressed</obj_property>
+            <obj_property name="label">Enter_pressed</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2/dut/pressed_undo">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">pressed_undo</obj_property>
+            <obj_property name="ObjectShortName">pressed_undo</obj_property>
+            <obj_property name="label">Undo_pressed</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2/dut/pol_cal/pr_state">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">pr_state[7:0]</obj_property>
+            <obj_property name="ObjectShortName">pr_state[7:0]</obj_property>
+            <obj_property name="label">CurrentState</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2/dut/pol_cal/nx_state">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">nx_state[7:0]</obj_property>
+            <obj_property name="ObjectShortName">nx_state[7:0]</obj_property>
+            <obj_property name="label">NextState</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group213">
+         <obj_property name="label">Actualizar Registros</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/tb_act2/dut/pol_cal/load_A">
+            <obj_property name="ElementShortName">load_A</obj_property>
+            <obj_property name="ObjectShortName">load_A</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2/dut/pol_cal/load_B">
+            <obj_property name="ElementShortName">load_B</obj_property>
+            <obj_property name="ObjectShortName">load_B</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2/dut/pol_cal/load_Op">
+            <obj_property name="ElementShortName">load_Op</obj_property>
+            <obj_property name="ObjectShortName">load_Op</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2/dut/pol_cal/update_Res">
+            <obj_property name="ElementShortName">update_Res</obj_property>
+            <obj_property name="ObjectShortName">update_Res</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group221">
+         <obj_property name="label">Señales en ALU</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/tb_act2/in_DataIn">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">in_DataIn[15:0]</obj_property>
+            <obj_property name="ObjectShortName">in_DataIn[15:0]</obj_property>
+            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            <obj_property name="label">DataIn</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2/dut/pol_cal/ALU_inst/ALU_A">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">ALU_A[15:0]</obj_property>
+            <obj_property name="ObjectShortName">ALU_A[15:0]</obj_property>
+            <obj_property name="label">A</obj_property>
+            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2/dut/pol_cal/ALU_inst/ALU_B">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">ALU_B[15:0]</obj_property>
+            <obj_property name="ObjectShortName">ALU_B[15:0]</obj_property>
+            <obj_property name="label">B</obj_property>
+            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2/dut/pol_cal/ALU_inst/ALU_OpCode">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">ALU_OpCode[1:0]</obj_property>
+            <obj_property name="ObjectShortName">ALU_OpCode[1:0]</obj_property>
+            <obj_property name="label">ALU_OpCode</obj_property>
+            <obj_property name="Radix">BINARYRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2/dut/pol_cal/ALU_inst/ALU_Result">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">ALU_Result[15:0]</obj_property>
+            <obj_property name="ObjectShortName">ALU_Result[15:0]</obj_property>
+            <obj_property name="label">Result</obj_property>
+            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2/dut/pol_cal/ALU_inst/ALU_Flags">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">ALU_Flags[3:0]</obj_property>
+            <obj_property name="ObjectShortName">ALU_Flags[3:0]</obj_property>
+            <obj_property name="label">Flags</obj_property>
+            <obj_property name="Radix">BINARYRADIX</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group241">
+         <obj_property name="label">Selección de Salida</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/tb_act2/in_DataIn">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">in_DataIn[15:0]</obj_property>
+            <obj_property name="ObjectShortName">in_DataIn[15:0]</obj_property>
+            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            <obj_property name="label">DataIn</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2/dut/pol_cal/DataOut">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">DataOut[15:0]</obj_property>
+            <obj_property name="ObjectShortName">DataOut[15:0]</obj_property>
+            <obj_property name="label">DataOut</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2/dut/pol_cal/pr_state">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">pr_state[7:0]</obj_property>
+            <obj_property name="ObjectShortName">pr_state[7:0]</obj_property>
+            <obj_property name="label">CurrentState</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/tb_act2/dut/displaySel">
+            <obj_property name="ElementShortName">displaySel</obj_property>
+            <obj_property name="ObjectShortName">displaySel</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/tb_act2/out_ToDisplay">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">out_ToDisplay[15:0]</obj_property>
+            <obj_property name="ObjectShortName">out_ToDisplay[15:0]</obj_property>
+            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            <obj_property name="label">ToDisplay</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group198">
+      <obj_property name="label">Salidas</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/tb_act2/out_Flags">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">out_Flags[3:0]</obj_property>
+         <obj_property name="ObjectShortName">out_Flags[3:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="label">Flags</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_act2/out_ToDisplay">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">out_ToDisplay[15:0]</obj_property>
+         <obj_property name="ObjectShortName">out_ToDisplay[15:0]</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+         <obj_property name="label">ToDisplay</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_act2/dut/pol_cal/pr_state">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">pr_state[7:0]</obj_property>
+         <obj_property name="ObjectShortName">pr_state[7:0]</obj_property>
+         <obj_property name="label">CurrentState</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

@@ -12,6 +12,7 @@ module Act3_RPCalculator #(parameter N_debouncer = 10) (
 
     logic [15:0] toTranslator;
 
+    // Este módulo se ocupa tal cual, no se modifica nada.
     Act2_RPCalculator  RPCalc_inst (
         .clk            (clk), 
         .resetN         (resetN), 
@@ -24,20 +25,30 @@ module Act3_RPCalculator #(parameter N_debouncer = 10) (
     );
 
     // Nos aprovechamos de que Vivado es capaz de detectar esta redundancia 
-    // y solo genera un sincronizador.
+    // y solo ocupa el sincronizado de Act2.
     logic reset;
     synchronizer sync(
         .i_clk     (clk),
         .i_PB      (~resetN),
         .o_PB_sync (reset)
     );
+    
+    // Señal DisplayFormat debe ser limpiada.
+    logic DisplayFormat_clean;  
+    logic dummy1, dummy2; // solo son para evitar el warning
+    debouncer_FSM #(N_debouncer) status_button_undo(
+        .clk               (clk),
+        .rst               (reset),
+        .PB                (DisplayFormat),
+        .PB_pressed_status (DisplayFormat_clean),
+        .PB_released_pulse (dummy1),
+        .PB_pressed_pulse  (dummy2)
+    );
 
-
-    translator #(8) translator_inst (
+    translator #(STATE_BITS) translator_inst (
         .i_clk           (clk),
         .i_reset         (reset),
-        .i_currentState  (CurrentState),
-        .i_displayFormat (DisplayFormat),
+        .i_displayFormat (DisplayFormat_clean),
         .i_toDisplay_bin (toTranslator),
         .o_segments      (Segments),
         .o_anodes        (Anodes)

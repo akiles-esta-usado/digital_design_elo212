@@ -8,6 +8,7 @@ En general se requieren etapas de sincronización y filtro de rebotes.
 Revise PushButton_debouncer
 
 Analice el código del FSM 
+
 - identifique entradas y salidas
 - obtenga diagrama de estados
 - analice funcionalidad de los parámetros.
@@ -15,8 +16,6 @@ Analice el código del FSM
 Considere reloj base de 100 MHz
 
 Determine un valor adecuado para DELAY para capturar correctamente la presión del botón.
-
-
 
 ## Timed FSM y Factorización de máquinas
 Esta máquina de estados ocupa estos conceptos
